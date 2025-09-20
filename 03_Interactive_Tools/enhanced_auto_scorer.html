@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoTech Auto-Scorer - Enhanced with Improvement Suggestions</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #f5f5f5; margin: 0; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; text-align: center; margin-bottom: 30px; }
+        .upload-section { background: white; border-radius: 10px; padding: 25px; margin: 20px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        textarea { width: 100%; min-height: 120px; padding: 15px; border: 1px solid #ddd; border-radius: 5px; font-family: monospace; font-size: 14px; margin: 10px 0; }
+        .btn { padding: 12px 25px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; margin: 10px 5px; transition: all 0.3s; }
+        .btn-primary { background: #3498db; color: white; }
+        .btn-primary:hover { background: #2980b9; }
+        .btn-success { background: #27ae60; color: white; }
+        .btn-success:hover { background: #229954; }
+        .scoring-results { background: white; border-radius: 10px; padding: 25px; margin: 20px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.1); display: none; }
+        .score-item { padding: 15px; margin: 10px 0; border-radius: 8px; }
+        .score-excellent { background: #d4edda; color: #155724; }
+        .score-good { background: #d1ecf1; color: #0c5460; }
+        .score-warning { background: #fff3cd; color: #856404; }
+        .score-poor { background: #f8d7da; color: #721c24; }
+        .progress-circle { width: 120px; height: 120px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: bold; margin: 0 auto; flex-direction: column; }
+        .artifact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0; }
+        .debug-info { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 5px; padding: 15px; margin: 10px 0; font-family: monospace; font-size: 12px; display: none; }
+        
+        /* Enhanced styles for improvement suggestions */
+        .improvement-suggestions {
+            font-size: 13px;
+            color: #2c3e50;
+            font-style: italic;
+            margin-top: 8px;
+            background: #f0f4f8;
+            padding: 10px 12px;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
+            line-height: 1.4;
+        }
+        .improvement-suggestions.excellent {
+            background: #e8f5e9;
+            border-left-color: #27ae60;
+            color: #1b5e20;
+        }
+        .improvement-suggestions.warning {
+            background: #fff8e1;
+            border-left-color: #ff9800;
+            color: #e65100;
+        }
+        .improvement-suggestions.poor {
+            background: #ffebee;
+            border-left-color: #f44336;
+            color: #c62828;
+        }
+        
+        /* Highlighting styles */
+        .highlight { background-color: #fff3cd; padding: 2px 4px; border-radius: 3px; transition: all 0.3s ease; cursor: pointer; }
+        .highlight.active { background-color: #ffc107; box-shadow: 0 0 8px rgba(255, 193, 7, 0.6); transform: scale(1.05); }
+        .debug-line { cursor: pointer; padding: 5px; border-radius: 3px; transition: background 0.2s; }
+        .debug-line:hover { background-color: rgba(52, 152, 219, 0.1); }
+        .highlight-container { border: 1px solid #ddd; border-radius: 5px; padding: 15px; background: white; font-family: monospace; font-size: 14px; line-height: 1.5; max-height: 200px; overflow-y: auto; white-space: pre-wrap; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 EcoTech Auto-Scorer Enhanced</h1>
+            <p>Interactive Quality Assessment with Improvement Suggestions</p>
+            <p style="font-size: 14px; opacity: 0.9; margin-top: 10px;">Get instant feedback and actionable tips to improve your scores!</p>
+        </div>
+
+        <div class="upload-section">
+            <h2>📋 Submit Your Team's Artifacts</h2>
+            <p style="margin-bottom: 20px;">The system will analyze your work and provide specific suggestions for improvement.</p>
+            
+            <div class="artifact-grid">
+                <div>
+                    <h3>🌍 Content Creation (30 points)</h3>
+                    <textarea id="translations" placeholder="Paste your translations here..."></textarea>
+                    <textarea id="linkedin" placeholder="Paste LinkedIn profiles here..."></textarea>
+                </div>
+                
+                <div>
+                    <h3>💬 Customer Intelligence (25 points)</h3>
+                    <textarea id="sentiment" placeholder="Paste sentiment analysis results..."></textarea>
+                    
+                    <h3>⚡ Automation Setup (25 points)</h3>
+                    <textarea id="workflows" placeholder="Paste workflow designs..."></textarea>
+                </div>
+            </div>
+
+            <h3>🔍 Data Quality (20 points)</h3>
+            <textarea id="validation" placeholder="Paste quality validation results..."></textarea>
+
+            <div style="text-align: center; margin: 30px 0;">
+                <button class="btn btn-primary" onclick="startAutoScoring()">🤖 Start Auto-Scoring</button>
+                <button class="btn btn-success" onclick="loadSampleData()">📝 Load Sample Data</button>
+            </div>
+        </div>
+
+        <div class="scoring-results" id="scoring-results">
+            <h2>📊 Interactive Scoring Results with Improvement Tips</h2>
+            
+            <div style="text-align: center; margin: 30px 0;">
+                <div class="progress-circle" id="overall-score">-</div>
+                <h3 id="score-label">Overall Score</h3>
+                <div id="launch-decision" style="font-size: 18px; font-weight: bold; margin: 20px 0;">Complete scoring to see recommendation</div>
+            </div>
+
+            <div id="detailed-scores">
+                <div class="score-item" id="content-score">
+                    <div style="flex: 1;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                            <span><strong>Content Quality (30 points)</strong></span>
+                            <span id="content-points">-/30</span>
+                        </div>
+                        <div id="content-improvements" class="improvement-suggestions"></div>
+                    </div>
+                </div>
+                <div class="score-item" id="intelligence-score">
+                    <div style="flex: 1;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                            <span><strong>Customer Intelligence (25 points)</strong></span>
+                            <span id="intelligence-points">-/25</span>
+                        </div>
+                        <div id="intelligence-improvements" class="improvement-suggestions"></div>
+                    </div>
+                </div>
+                <div class="score-item" id="automation-score">
+                    <div style="flex: 1;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                            <span><strong>Automation Setup (25 points)</strong></span>
+                            <span id="automation-points">-/25</span>
+                        </div>
+                        <div id="automation-improvements" class="improvement-suggestions"></div>
+                    </div>
+                </div>
+                <div class="score-item" id="quality-score">
+                    <div style="flex: 1;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                            <span><strong>Data Quality (20 points)</strong></span>
+                            <span id="quality-points">-/20</span>
+                        </div>
+                        <div id="quality-improvements" class="improvement-suggestions"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="debug-info" id="debug-info">
+                <div id="debug-content"></div>
+            </div>
+
+            <div style="text-align: center; margin: 30px 0;">
+                <button class="btn btn-success" onclick="toggleDebug()">🔧 Show Interactive Debug</button>
+                <button class="btn btn-primary" onclick="exportResults()">📋 Export Results</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let scoringResults = {};
+        let debugInfo = {};
+
+        // Sample data loader (same as before)
+        function loadSampleData() {
+            document.getElementById('translations').value = `English: AquaPure Solar - Revolutionary water purification device. Solar-powered operation, 99.9% bacteria removal, portable (2.5kg), 10L/hour capacity, IoT monitoring.
+
+Spanish: AquaPure Solar - Dispositivo revolucionario de purificación de agua. Funcionamiento solar, eliminación 99.9% bacterias, portátil (2.5kg), capacidad 10L/hora.
+
+Japanese: AquaPure Solar - 革新的な水質浄化装置。ソーラー駆動、99.9%バクテリア除去、ポータブル(2.5kg)、10L/時間容量。
+
+German: AquaPure Solar - Revolutionäres Wasserreinigungsgerät. Solarbetrieb, 99,9% Bakterienentfernung, tragbar (2,5kg), 10L/Stunde.
+
+Hindi: AquaPure Solar - क्रांतिकारी जल शुद्धीकरण उपकरण। सोलर संचालित, 99.9% बैक्टीरिया हटाना, पोर्टेबल (2.5kg)।`;
+
+            document.getElementById('linkedin').value = `Maria Santos: Regional Sales Manager - Southern Europe at EcoTech Solutions. 5+ Years B2B Sales Leadership. MBA from Universidad de Barcelona.
+
+Hiroshi Tanaka: Regional Sales Manager - Asia Pacific at EcoTech Solutions. 8+ Years Tech Sales. Engineering background from Tokyo Institute of Technology.
+
+Priya Sharma: Regional Sales Manager - South Asia at EcoTech Solutions. 6+ Years Impact-Driven Sales. MS Environmental Engineering from IIT Delhi.`;
+
+            document.getElementById('sentiment').value = `Sentiment Analysis Results:
+Review 1: Score: 0.95, Emotion: Excitement, Action: Feature in testimonials, Priority: High
+Review 2: Score: 0.65, Emotion: Disappointment, Action: Investigate performance claims
+Overall Summary: Average sentiment 0.63/1.0, 40% positive, 20% negative
+Top 3 Issues: Device reliability, performance claims, customer service
+Response Templates: Created for positive, negative, and mixed reviews`;
+
+            document.getElementById('workflows').value = `Customer Support Workflow:
+Trigger: New support ticket received
+Steps: Extract info, analyze sentiment, categorize issue, set priority, route to team
+Escalation Rules: Negative sentiment + technical = urgent
+
+Social Media Workflow:
+Trigger: Brand mention detected
+Steps: Extract details, analyze sentiment, generate response, route for approval`;
+
+            document.getElementById('validation').value = `Quality Validation Results:
+Consistency Check: Weight 2.5kg consistent, purification rate 99.9% consistent
+Translation Quality: Spanish 9.5/10, Japanese 8.7/10, German 9.2/10, Hindi 6.5/10
+Average: 8.5/10
+Issues Found: Minor pricing discrepancy
+Critical Issues: None - all technical specs match`;
+
+            alert('✅ Sample data loaded! Click "Start Auto-Scoring" to see improvement suggestions.');
+        }
+
+        // Simplified scoring functions (keeping the core logic)
+        function scoreContentQuality(translations, linkedin) {
+            let score = 0;
+            let debug = [];
+            let matchedKeywords = [];
+
+            // Language detection
+            const languages = ['english', 'spanish', 'japanese', 'german', 'hindi'];
+            languages.forEach((lang, index) => {
+                if (translations.toLowerCase().includes(lang) || 
+                    translations.includes('革新的') || translations.includes('dispositivo') || 
+                    translations.includes('उपकरण') || translations.includes('wasserreinigung')) {
+                    score += 3;
+                    debug.push(`Language ${index + 1} detected → +3 pts`);
+                }
+            });
+
+            // Technical specs
+            const specs = ['99.9', '2.5', '10l', 'solar', 'iot', 'portable'];
+            specs.forEach(spec => {
+                if (translations.toLowerCase().includes(spec.toLowerCase())) {
+                    score += 1.5;
+                    debug.push(`Tech spec "${spec}" found → +1.5 pts`);
+                }
+            });
+
+            // LinkedIn profiles
+            const profiles = ['maria', 'hiroshi', 'priya'];
+            profiles.forEach(name => {
+                if (linkedin.toLowerCase().includes(name)) {
+                    score += 2;
+                    debug.push(`${name} profile detected → +2 pts`);
+                }
+            });
+
+            return { score: Math.min(30, score), debug, matchedKeywords: [] };
+        }
+
+        function scoreCustomerIntelligence(sentiment) {
+            let score = 0;
+            let debug = [];
+
+            const keywords = ['score', 'sentiment', 'emotion', 'action', 'priority', 'overall', 'average', 'template'];
+            keywords.forEach(word => {
+                if (sentiment.toLowerCase().includes(word)) {
+                    score += 2.5;
+                    debug.push(`Keyword "${word}" found → +2.5 pts`);
+                }
+            });
+
+            return { score: Math.min(25, score), debug, matchedKeywords: [] };
+        }
+
+        function scoreAutomationSetup(workflows) {
+            let score = 0;
+            let debug = [];
+
+            const keywords = ['customer', 'support', 'social', 'media', 'trigger', 'step', 'escalation'];
+            keywords.forEach(word => {
+                if (workflows.toLowerCase().includes(word)) {
+                    score += 3;
+                    debug.push(`Workflow keyword "${word}" found → +3 pts`);
+                }
+            });
+
+            return { score: Math.min(25, score), debug, matchedKeywords: [] };
+        }
+
+        function scoreDataQuality(validation) {
+            let score = 0;
+            let debug = [];
+
+            const keywords = ['consistent', 'quality', '/10', 'average', 'issues', 'critical'];
+            keywords.forEach(word => {
+                if (validation.toLowerCase().includes(word)) {
+                    score += 2.5;
+                    debug.push(`Quality keyword "${word}" found → +2.5 pts`);
+                }
+            });
+
+            return { score: Math.min(20, score), debug, matchedKeywords: [] };
+        }
+
+        // Enhanced improvement suggestions generator
+        function generateSuggestions() {
+            const suggestions = {};
+
+            // Content Quality Suggestions
+            suggestions.content = [];
+            const contentPercentage = (scoringResults.content / 30) * 100;
+            
+            if (contentPercentage < 60) {
+                suggestions.content.push("🔍 Add all 5 language translations with technical terms like '99.9%', '2.5kg', '10L/hour'");
+                suggestions.content.push("👥 Include complete LinkedIn profiles for Maria Santos, Hiroshi Tanaka, and Priya Sharma");
+                suggestions.content.push("🌍 Ensure cultural adaptation for each market (not just word-for-word translation)");
+            } else if (contentPercentage < 80) {
+                suggestions.content.push("✨ Add more technical specifications and IoT features to boost your score");
+                suggestions.content.push("📝 Enhance LinkedIn profiles with specific achievements and metrics");
+            } else {
+                suggestions.content.push("🎉 Excellent work! Your content quality is outstanding");
+            }
+
+            // Customer Intelligence Suggestions
+            suggestions.intelligence = [];
+            const intelligencePercentage = (scoringResults.intelligence / 25) * 100;
+            
+            if (intelligencePercentage < 60) {
+                suggestions.intelligence.push("📊 Include sentiment scores (0.0-1.0) and emotions for each review");
+                suggestions.intelligence.push("🎯 Add specific action recommendations (escalate, investigate, feature)");
+                suggestions.intelligence.push("📈 Provide overall summary with average sentiment and top issues");
+            } else if (intelligencePercentage < 80) {
+                suggestions.intelligence.push("🔧 Add more detailed priority levels and response templates");
+                suggestions.intelligence.push("📋 Include comprehensive analysis of customer patterns");
+            } else {
+                suggestions.intelligence.push("🎉 Outstanding sentiment analysis! Very thorough work");
+            }
+
+            // Automation Setup Suggestions
+            suggestions.automation = [];
+            const automationPercentage = (scoringResults.automation / 25) * 100;
+            
+            if (automationPercentage < 60) {
+                suggestions.automation.push("🔄 Design both customer support AND social media workflows");
+                suggestions.automation.push("⚡ Include clear triggers, steps, and escalation rules");
+                suggestions.automation.push("🎯 Add specific routing logic and response templates");
+            } else if (automationPercentage < 80) {
+                suggestions.automation.push("🔧 Enhance escalation rules with more specific conditions");
+                suggestions.automation.push("📱 Add more detailed social media monitoring steps");
+            } else {
+                suggestions.automation.push("🎉 Excellent automation design! Well-structured workflows");
+            }
+
+            // Data Quality Suggestions
+            suggestions.quality = [];
+            const qualityPercentage = (scoringResults.quality / 20) * 100;
+            
+            if (qualityPercentage < 60) {
+                suggestions.quality.push("✅ Perform consistency checks across all translations and specs");
+                suggestions.quality.push("📊 Include translation quality scores (X/10 format) for each language");
+                suggestions.quality.push("🚨 Identify and document any critical issues found");
+            } else if (qualityPercentage < 80) {
+                suggestions.quality.push("🔍 Add more detailed validation of technical specifications");
+                suggestions.quality.push("📈 Include average quality calculations and improvement recommendations");
+            } else {
+                suggestions.quality.push("🎉 Excellent quality assurance! Very thorough validation");
+            }
+
+            return suggestions;
+        }
+
+        // Display suggestions with appropriate styling
+        function displaySuggestions() {
+            const suggestions = generateSuggestions();
+            
+            // Helper function to get suggestion class based on score percentage
+            function getSuggestionClass(score, maxScore) {
+                const percentage = (score / maxScore) * 100;
+                if (percentage >= 80) return 'excellent';
+                if (percentage >= 60) return '';
+                if (percentage >= 40) return 'warning';
+                return 'poor';
+            }
+
+            // Display suggestions for each category
+            const contentClass = getSuggestionClass(scoringResults.content, 30);
+            document.getElementById('content-improvements').innerHTML = suggestions.content.join('<br>');
+            document.getElementById('content-improvements').className = `improvement-suggestions ${contentClass}`;
+
+            const intelligenceClass = getSuggestionClass(scoringResults.intelligence, 25);
+            document.getElementById('intelligence-improvements').innerHTML = suggestions.intelligence.join('<br>');
+            document.getElementById('intelligence-improvements').className = `improvement-suggestions ${intelligenceClass}`;
+
+            const automationClass = getSuggestionClass(scoringResults.automation, 25);
+            document.getElementById('automation-improvements').innerHTML = suggestions.automation.join('<br>');
+            document.getElementById('automation-improvements').className = `improvement-suggestions ${automationClass}`;
+
+            const qualityClass = getSuggestionClass(scoringResults.quality, 20);
+            document.getElementById('quality-improvements').innerHTML = suggestions.quality.join('<br>');
+            document.getElementById('quality-improvements').className = `improvement-suggestions ${qualityClass}`;
+        }
+
+        // Main scoring function
+        function startAutoScoring() {
+            const translations = document.getElementById('translations').value;
+            const linkedin = document.getElementById('linkedin').value;
+            const sentiment = document.getElementById('sentiment').value;
+            const workflows = document.getElementById('workflows').value;
+            const validation = document.getElementById('validation').value;
+
+            // Score each category
+            const contentResult = scoreContentQuality(translations, linkedin);
+            const intelligenceResult = scoreCustomerIntelligence(sentiment);
+            const automationResult = scoreAutomationSetup(workflows);
+            const qualityResult = scoreDataQuality(validation);
+
+            const totalScore = Math.round(
+                contentResult.score + intelligenceResult.score + automationResult.score + qualityResult.score
+            );
+
+            // Store results
+            scoringResults = {
+                content: Math.round(contentResult.score),
+                intelligence: Math.round(intelligenceResult.score),
+                automation: Math.round(automationResult.score),
+                quality: Math.round(qualityResult.score),
+                total: totalScore
+            };
+
+            debugInfo = {
+                content: contentResult.debug,
+                intelligence: intelligenceResult.debug,
+                automation: automationResult.debug,
+                quality: qualityResult.debug
+            };
+
+            // Display results and suggestions
+            displayResults();
+            displaySuggestions();
+            document.getElementById('scoring-results').style.display = 'block';
+        }
+
+        // Display results (simplified version)
+        function displayResults() {
+            const results = scoringResults;
+            const maxScores = { content: 30, intelligence: 25, automation: 25, quality: 20 };
+
+            function formatScore(score, max) {
+                const percentage = ((score / max) * 100).toFixed(1);
+                let indicator = '';
+                if (percentage >= 80) indicator = ' ✨';
+                else if (percentage >= 60) indicator = ' ✅';
+                else if (percentage >= 40) indicator = ' ⚠️';
+                else indicator = ' ❌';
+                
+                return `${score}/${max} (${percentage}%)${indicator}`;
+            }
+
+            document.getElementById('content-points').textContent = formatScore(results.content, maxScores.content);
+            document.getElementById('intelligence-points').textContent = formatScore(results.intelligence, maxScores.intelligence);
+            document.getElementById('automation-points').textContent = formatScore(results.automation, maxScores.automation);
+            document.getElementById('quality-points').textContent = formatScore(results.quality, maxScores.quality);
+
+            // Overall score
+            const totalMax = Object.values(maxScores).reduce((a, b) => a + b, 0);
+            const overallPercentage = ((results.total / totalMax) * 100).toFixed(1);
+            const scoreCircle = document.getElementById('overall-score');
+            
+            scoreCircle.innerHTML = `
+                <div style="font-size: 24px; font-weight: bold;">${results.total}</div>
+                <div style="font-size: 12px; margin-top: -5px;">/${totalMax}</div>
+                <div style="font-size: 14px; margin-top: 2px;">${overallPercentage}%</div>
+            `;
+
+            // Color coding
+            if (overallPercentage >= 85) {
+                scoreCircle.style.background = 'linear-gradient(135deg, #27ae60, #2ecc71)';
+                scoreCircle.style.color = 'white';
+            } else if (overallPercentage >= 70) {
+                scoreCircle.style.background = 'linear-gradient(135deg, #3498db, #5dade2)';
+                scoreCircle.style.color = 'white';
+            } else if (overallPercentage >= 55) {
+                scoreCircle.style.background = 'linear-gradient(135deg, #f39c12, #f4d03f)';
+                scoreCircle.style.color = 'white';
+            } else {
+                scoreCircle.style.background = 'linear-gradient(135deg, #e74c3c, #ec7063)';
+                scoreCircle.style.color = 'white';
+            }
+
+            // Launch decision
+            let decision;
+            if (overallPercentage >= 85) {
+                decision = '🥇 LAUNCH HERO - Proceed with launch! $2M secured.';
+            } else if (overallPercentage >= 70) {
+                decision = '🥈 LAUNCH SAVER - Minor fixes needed, 24-hour delay.';
+            } else if (overallPercentage >= 55) {
+                decision = '🥉 CRISIS MANAGER - Major fixes required, 1-week delay.';
+            } else {
+                decision = '❌ MISSION FAILED - Extensive rework needed.';
+            }
+            
+            document.getElementById('launch-decision').textContent = decision;
+
+            // Color code individual items
+            colorCodeScoreItem('content-score', results.content, maxScores.content);
+            colorCodeScoreItem('intelligence-score', results.intelligence, maxScores.intelligence);
+            colorCodeScoreItem('automation-score', results.automation, maxScores.automation);
+            colorCodeScoreItem('quality-score', results.quality, maxScores.quality);
+        }
+
+        function colorCodeScoreItem(elementId, score, maxScore) {
+            const element = document.getElementById(elementId);
+            const percentage = (score / maxScore) * 100;
+
+            if (percentage >= 80) {
+                element.className = 'score-item score-excellent';
+                element.style.borderLeft = '5px solid #27ae60';
+            } else if (percentage >= 60) {
+                element.className = 'score-item score-good';
+                element.style.borderLeft = '5px solid #3498db';
+            } else if (percentage >= 40) {
+                element.className = 'score-item score-warning';
+                element.style.borderLeft = '5px solid #f39c12';
+            } else {
+                element.className = 'score-item score-poor';
+                element.style.borderLeft = '5px solid #e74c3c';
+            }
+        }
+
+        // Simplified debug toggle
+        function toggleDebug() {
+            const debugDiv = document.getElementById('debug-info');
+            const debugContent = document.getElementById('debug-content');
+            const button = event.target;
+
+            if (debugDiv.style.display === 'none') {
+                let debugText = '<h3>🔍 Scoring Breakdown</h3>';
+                
+                debugText += '<h4>Content Quality:</h4>';
+                debugInfo.content.forEach(item => debugText += `• ${item}<br>`);
+                
+                debugText += '<h4>Customer Intelligence:</h4>';
+                debugInfo.intelligence.forEach(item => debugText += `• ${item}<br>`);
+                
+                debugText += '<h4>Automation Setup:</h4>';
+                debugInfo.automation.forEach(item => debugText += `• ${item}<br>`);
+                
+                debugText += '<h4>Data Quality:</h4>';
+                debugInfo.quality.forEach(item => debugText += `• ${item}<br>`);
+
+                debugContent.innerHTML = debugText;
+                debugDiv.style.display = 'block';
+                button.textContent = '🔧 Hide Debug Info';
+            } else {
+                debugDiv.style.display = 'none';
+                button.textContent = '🔧 Show Debug Info';
+            }
+        }
+
+        function exportResults() {
+            const results = {
+                timestamp: new Date().toISOString(),
+                teamName: prompt('Enter your team name:') || 'Anonymous Team',
+                scores: scoringResults,
+                launchDecision: document.getElementById('launch-decision').textContent
+            };
+            
+            const blob = new Blob([JSON.stringify(results, null, 2)], {type: 'application/json'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `ecotech_enhanced_score_${results.teamName.replace(/\s+/g, '_')}.json`;
+            a.click();
+        }
+    </script>
+</body>
+</html>

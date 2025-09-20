@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoTech Crisis Workshop - AI Tools Challenge</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .slide { min-height: 100vh; display: none; padding: 40px 20px; }
+        .slide.active { display: block; }
+        .slide h1 { font-size: 3em; margin-bottom: 30px; text-align: center; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .slide h2 { font-size: 2.5em; margin-bottom: 25px; color: #FFD700; }
+        .slide h3 { font-size: 1.8em; margin-bottom: 20px; color: #87CEEB; }
+        .crisis-box { background: rgba(255,0,0,0.2); border: 3px solid #FF6B6B; border-radius: 15px; padding: 30px; margin: 20px 0; }
+        .prompt-box { background: rgba(0,255,0,0.2); border: 3px solid #4ECDC4; border-radius: 15px; padding: 25px; margin: 20px 0; }
+        .team-box { background: rgba(255,255,0,0.2); border: 3px solid #FFE66D; border-radius: 15px; padding: 25px; margin: 20px 0; }
+        .timer { font-size: 4em; color: #FF6B6B; text-align: center; font-weight: bold; margin: 20px 0; }
+        .nav-buttons { position: fixed; bottom: 20px; right: 20px; }
+        .nav-buttons button { padding: 15px 25px; margin: 5px; font-size: 16px; border: none; border-radius: 8px; cursor: pointer; background: #4ECDC4; color: white; }
+        .nav-buttons button:hover { background: #45B7B8; }
+        ul { font-size: 1.3em; line-height: 1.8; margin-left: 30px; }
+        .highlight { background: rgba(255,255,0,0.3); padding: 5px 10px; border-radius: 5px; }
+        .score-table { background: rgba(255,255,255,0.1); border-radius: 10px; padding: 20px; margin: 20px 0; }
+        .score-table table { width: 100%; border-collapse: collapse; }
+        .score-table th, .score-table td { padding: 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.3); }
+        .emoji { font-size: 1.5em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <!-- Slide 1: Title -->
+        <div class="slide active">
+            <h1>🚨 CRISIS WORKSHOP 🚨</h1>
+            <div class="crisis-box">
+                <h2>EcoTech Solutions Emergency</h2>
+                <h3>AI Tools Challenge</h3>
+                <p style="font-size: 1.5em; text-align: center; margin-top: 30px;">
+                    <strong>$2 Million Product Launch at Risk</strong><br>
+                    <span style="color: #FFD700;">You have 4 hours to save the company</span>
+                </p>
+            </div>
+            <p style="text-align: center; font-size: 1.3em; margin-top: 40px;">
+                This is not a demo. This is a simulation.<br>
+                Your decisions will determine success or failure.
+            </p>
+        </div>
+
+        <!-- Slide 2: The Crisis -->
+        <div class="slide">
+            <h1>📧 URGENT EMAIL</h1>
+            <div class="crisis-box">
+                <h3>From: CEO Sarah Martinez</h3>
+                <h3>Subject: URGENT - Product Launch Crisis</h3>
+                <p style="font-size: 1.4em; line-height: 1.6; margin-top: 20px;">
+                    "Team, we have a MAJOR crisis. Our marketing agency just canceled due to a data breach. 
+                    Our AquaPure Solar launch in 5 countries is happening TODAY at 2 PM.
+                </p>
+                <p style="font-size: 1.4em; line-height: 1.6; margin-top: 15px;">
+                    We need content in 5 languages, customer feedback analysis, automated workflows, 
+                    data validation, and sales team profiles.
+                </p>
+                <p style="font-size: 1.6em; color: #FF6B6B; text-align: center; margin-top: 20px;">
+                    <strong>4 HOURS or we lose $2M in pre-orders.</strong>
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 3: Your Mission -->
+        <div class="slide">
+            <h1>🎯 YOUR MISSION</h1>
+            <div class="team-box">
+                <h2>Team Roles (3-4 people):</h2>
+                <ul>
+                    <li><strong>Content Manager:</strong> Translations & marketing content</li>
+                    <li><strong>Data Analyst:</strong> Customer feedback analysis</li>
+                    <li><strong>Automation Specialist:</strong> Workflow setup</li>
+                    <li><strong>Quality Assurance:</strong> Data validation</li>
+                </ul>
+            </div>
+            <div class="prompt-box">
+                <h3>🤖 AI Tools Available:</h3>
+                <ul>
+                    <li>ChatGPT for content creation & translation</li>
+                    <li>Sentiment analysis for customer reviews</li>
+                    <li>Zapier for workflow automation</li>
+                    <li>Data integrity validation tools</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 4: Phase 1 -->
+        <div class="slide">
+            <h1>📋 PHASE 1: CRISIS ASSESSMENT</h1>
+            <div class="timer">⏰ 10 MINUTES</div>
+            <div class="prompt-box">
+                <h3>What Your Team Must Do:</h3>
+                <ul>
+                    <li>Assign roles to team members</li>
+                    <li>Review product specifications</li>
+                    <li>Plan your AI tool strategy</li>
+                    <li>Create action timeline</li>
+                </ul>
+            </div>
+            <div class="team-box">
+                <h3>📊 Product: AquaPure Solar</h3>
+                <ul>
+                    <li>Solar-powered water purifier</li>
+                    <li>99.9% purification rate, 10L/hour</li>
+                    <li>Portable (2.5kg), IoT-enabled</li>
+                    <li>Markets: USA, Spain, Japan, Germany, India</li>
+                    <li>Price: $299 USD</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 5: Phase 2 -->
+        <div class="slide">
+            <h1>🌍 PHASE 2: CONTENT CREATION</h1>
+            <div class="timer">⏰ 25 MINUTES</div>
+            <div class="prompt-box">
+                <h3>🤖 ChatGPT Prompts to Use:</h3>
+                <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; margin: 10px 0;">
+                    <strong>For Product Translation:</strong><br>
+                    "Translate this AquaPure Solar product description to [Spanish/Japanese/German/Hindi]. 
+                    Adapt it culturally for [country] market, maintaining technical accuracy. 
+                    Focus on [outdoor recreation/emergency preparedness/rural communities] use case."
+                </div>
+                <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; margin: 10px 0;">
+                    <strong>For LinkedIn Profiles:</strong><br>
+                    "Create a compelling LinkedIn profile for Maria Santos, Regional Sales Manager for Spain. 
+                    5 years water tech experience, MBA from Barcelona. Focus on B2B sales achievements 
+                    and Mediterranean market expertise."
+                </div>
+            </div>
+            <div class="team-box">
+                <h3>✅ Deliverables:</h3>
+                <ul>
+                    <li>Product descriptions in 5 languages</li>
+                    <li>3 LinkedIn profiles for sales team</li>
+                    <li>Social media posts for each market</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 6: Phase 3 -->
+        <div class="slide">
+            <h1>💬 PHASE 3: CUSTOMER INTELLIGENCE</h1>
+            <div class="timer">⏰ 20 MINUTES</div>
+            <div class="prompt-box">
+                <h3>🤖 Sentiment Analysis Prompts:</h3>
+                <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; margin: 10px 0;">
+                    <strong>For Review Analysis:</strong><br>
+                    "Analyze these 15 customer reviews for AquaPure Solar. For each review, provide: 
+                    1) Sentiment score (0-1), 2) Key emotion, 3) Main issues mentioned, 
+                    4) Recommended business action. Prioritize urgent issues."
+                </div>
+                <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; margin: 10px 0;">
+                    <strong>For Response Templates:</strong><br>
+                    "Create professional response templates for: 1) Highly positive reviews (thank + referral request), 
+                    2) Negative reviews (apology + solution), 3) Mixed reviews (acknowledge + follow-up)."
+                </div>
+            </div>
+            <div class="crisis-box">
+                <h3>⚠️ Sample Critical Review:</h3>
+                <p style="font-style: italic;">"Complete waste of money! Device stopped working after 2 weeks. 
+                Customer service terrible - no response for 10 days. Very disappointed." ⭐</p>
+            </div>
+        </div>
+
+        <!-- Slide 7: Phase 4 -->
+        <div class="slide">
+            <h1>⚡ PHASE 4: AUTOMATION SETUP</h1>
+            <div class="timer">⏰ 20 MINUTES</div>
+            <div class="prompt-box">
+                <h3>🤖 Workflow Design Prompts:</h3>
+                <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; margin: 10px 0;">
+                    <strong>For Customer Support Workflow:</strong><br>
+                    "Design a Zapier workflow: Trigger = new support ticket. Steps: 1) Analyze sentiment, 
+                    2) Categorize issue type, 3) Route to appropriate team, 4) Set priority level, 
+                    5) Send auto-acknowledgment. Include escalation rules for negative sentiment."
+                </div>
+                <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; margin: 10px 0;">
+                    <strong>For Social Media Monitoring:</strong><br>
+                    "Create workflow for brand mentions: Trigger = social media mention. 
+                    Actions: sentiment analysis → generate response → route for approval if negative → 
+                    auto-respond to positive → log in CRM."
+                </div>
+            </div>
+            <div class="team-box">
+                <h3>✅ Must Include:</h3>
+                <ul>
+                    <li>Clear trigger conditions</li>
+                    <li>Step-by-step action sequences</li>
+                    <li>Escalation rules for critical issues</li>
+                    <li>Backup plans if automation fails</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 8: Phase 5 -->
+        <div class="slide">
+            <h1>🔍 PHASE 5: QUALITY ASSURANCE</h1>
+            <div class="timer">⏰ 10 MINUTES</div>
+            <div class="prompt-box">
+                <h3>🤖 Data Validation Prompts:</h3>
+                <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; margin: 10px 0;">
+                    <strong>For Consistency Check:</strong><br>
+                    "Review all our AquaPure Solar content for consistency. Check: 1) Product specs 
+                    (weight, capacity, temperature range), 2) Pricing across markets, 3) Brand messaging alignment, 
+                    4) Technical accuracy. Flag any discrepancies."
+                </div>
+                <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; margin: 10px 0;">
+                    <strong>For Translation Quality:</strong><br>
+                    "Evaluate these translations for: 1) Technical accuracy, 2) Cultural appropriateness, 
+                    3) Brand voice consistency, 4) Grammar/spelling. Rate each translation 1-10 and 
+                    identify critical issues."
+                </div>
+            </div>
+            <div class="crisis-box">
+                <h3>⚠️ Critical Validation Points:</h3>
+                <ul>
+                    <li>Weight: 2.5kg (consistent everywhere?)</li>
+                    <li>Capacity: 10L/hour (same in all languages?)</li>
+                    <li>Price conversions accurate?</li>
+                    <li>Contact info correct for each market?</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 9: Phase 6 -->
+        <div class="slide">
+            <h1>🎯 PHASE 6: CRISIS RESOLUTION</h1>
+            <div class="timer">⏰ 2 MINUTES PER TEAM</div>
+            <div class="team-box">
+                <h3>📊 Your Presentation Must Cover:</h3>
+                <ul>
+                    <li><strong>30 seconds:</strong> What you accomplished</li>
+                    <li><strong>30 seconds:</strong> Quality metrics achieved</li>
+                    <li><strong>30 seconds:</strong> Time/cost savings vs manual approach</li>
+                    <li><strong>30 seconds:</strong> Recommendation: Launch or delay?</li>
+                </ul>
+            </div>
+            <div class="prompt-box">
+                <h3>🤖 Presentation Prep Prompt:</h3>
+                <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; margin: 10px 0;">
+                    "Summarize our crisis response for CEO presentation: 1) Deliverables completed, 
+                    2) Quality scores achieved, 3) Estimated time savings vs traditional approach, 
+                    4) Risk assessment for immediate launch, 5) Final recommendation with justification."
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Scoring -->
+        <div class="slide">
+            <h1>🏆 SCORING SYSTEM</h1>
+            <div class="score-table">
+                <table>
+                    <tr><th>Category</th><th>Points</th><th>Criteria</th></tr>
+                    <tr><td>Content Quality</td><td>30</td><td>Translation accuracy, cultural adaptation, brand consistency</td></tr>
+                    <tr><td>Customer Intelligence</td><td>25</td><td>Sentiment analysis, action plans, response templates</td></tr>
+                    <tr><td>Automation Setup</td><td>25</td><td>Workflow completeness, business logic</td></tr>
+                    <tr><td>Data Quality</td><td>20</td><td>Consistency checks, error identification</td></tr>
+                </table>
+            </div>
+            <div class="team-box">
+                <h3>🎯 Success Levels:</h3>
+                <ul>
+                    <li><span class="emoji">🥇</span> <strong>85-100 points:</strong> LAUNCH HERO - Launch proceeds!</li>
+                    <li><span class="emoji">🥈</span> <strong>70-84 points:</strong> LAUNCH SAVER - 1 day delay</li>
+                    <li><span class="emoji">🥉</span> <strong>55-69 points:</strong> CRISIS MANAGER - 1 week delay</li>
+                    <li><span class="emoji">❌</span> <strong>&lt;55 points:</strong> MISSION FAILED - $2M lost</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 11: Ready to Start -->
+        <div class="slide">
+            <h1>🚀 READY TO SAVE ECOTECH?</h1>
+            <div class="crisis-box">
+                <h2 style="text-align: center;">The Clock Starts NOW</h2>
+                <div class="timer">4:00:00</div>
+                <p style="font-size: 1.5em; text-align: center;">
+                    <strong>Your mission:</strong> Use AI tools to save a $2M product launch
+                </p>
+            </div>
+            <div class="team-box">
+                <h3>🎯 Remember:</h3>
+                <ul>
+                    <li>This is hands-on - actually use the AI tools</li>
+                    <li>Speed matters - perfect is the enemy of done</li>
+                    <li>Collaborate - each role is critical</li>
+                    <li>Think business impact - what saves the launch?</li>
+                </ul>
+            </div>
+            <p style="text-align: center; font-size: 2em; margin-top: 40px; color: #FFD700;">
+                <strong>Good luck, teams! 🍀</strong>
+            </p>
+        </div>
+
+    </div>
+
+    <div class="nav-buttons">
+        <button onclick="previousSlide()">← Previous</button>
+        <button onclick="nextSlide()">Next →</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function previousSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+            if (e.key === 'ArrowLeft') previousSlide();
+        });
+
+        // Auto-advance timer for demo (optional)
+        // setInterval(nextSlide, 10000); // Uncomment to auto-advance every 10 seconds
+    </script>
+</body>
+</html>

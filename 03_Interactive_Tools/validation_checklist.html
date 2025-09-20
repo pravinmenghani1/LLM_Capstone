@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Validation Checklist</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f8f9fa; margin: 0; padding: 20px; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; text-align: center; margin-bottom: 30px; }
+        .validation-section { background: white; border-radius: 10px; padding: 25px; margin: 20px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .validation-section h2 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px; }
+        .checklist { list-style: none; padding: 0; }
+        .checklist li { margin: 10px 0; padding: 10px; border-radius: 5px; display: flex; align-items: center; }
+        .checklist li input[type="checkbox"] { margin-right: 10px; transform: scale(1.2); }
+        .prompt-box { background: #e8f5e8; border-left: 4px solid #27ae60; padding: 20px; margin: 15px 0; border-radius: 5px; }
+        .prompt-box h4 { color: #27ae60; margin-top: 0; }
+        .code-block { background: #2c3e50; color: #ecf0f1; padding: 15px; border-radius: 5px; font-family: monospace; font-size: 0.9em; white-space: pre-wrap; margin: 10px 0; }
+        .score-card { background: #f8f9fa; border: 2px solid #dee2e6; border-radius: 10px; padding: 20px; margin: 20px 0; }
+        .score-item { display: flex; justify-content: space-between; align-items: center; margin: 10px 0; padding: 10px; background: white; border-radius: 5px; }
+        .score-input { width: 60px; padding: 5px; border: 1px solid #ddd; border-radius: 3px; text-align: center; }
+        .result-box { padding: 20px; border-radius: 10px; margin: 15px 0; font-weight: bold; text-align: center; }
+        .result-excellent { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .result-good { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+        .result-warning { background: #fff3cd; color: #856404; border: 1px solid #ffeaa7; }
+        .result-danger { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .btn { padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; margin: 5px; }
+        .btn-primary { background: #3498db; color: white; }
+        .btn-success { background: #27ae60; color: white; }
+        .btn-warning { background: #f39c12; color: white; }
+        .btn-danger { background: #e74c3c; color: white; }
+        .progress-bar { width: 100%; height: 20px; background: #ecf0f1; border-radius: 10px; overflow: hidden; margin: 10px 0; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, #e74c3c 0%, #f39c12 25%, #f1c40f 50%, #27ae60 75%, #2ecc71 100%); transition: width 0.3s ease; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔍 Data Validation Checklist</h1>
+            <p>Quality Assurance for EcoTech Crisis Workshop</p>
+        </div>
+
+        <!-- Phase 1: Content Collection -->
+        <div class="validation-section">
+            <h2>📋 Phase 1: Content Collection (2 minutes)</h2>
+            <ul class="checklist">
+                <li><input type="checkbox" id="collect1"> <label for="collect1">Gathered all product descriptions (5 languages)</label></li>
+                <li><input type="checkbox" id="collect2"> <label for="collect2">Collected LinkedIn profiles (3 sales managers)</label></li>
+                <li><input type="checkbox" id="collect3"> <label for="collect3">Retrieved automation workflows (2 workflows)</label></li>
+                <li><input type="checkbox" id="collect4"> <label for="collect4">Compiled pricing information (5 markets)</label></li>
+                <li><input type="checkbox" id="collect5"> <label for="collect5">Organized technical specifications</label></li>
+            </ul>
+        </div>
+
+        <!-- Phase 2: Consistency Check -->
+        <div class="validation-section">
+            <h2>🔍 Phase 2: Consistency Check (4 minutes)</h2>
+            
+            <div class="prompt-box">
+                <h4>🤖 ChatGPT Prompt - Copy & Paste:</h4>
+                <div class="code-block">Review all our AquaPure Solar content for consistency:
+
+PRODUCT SPECIFICATIONS TO VERIFY:
+Weight: Should be 2.5kg everywhere
+Capacity: Should be 10 liters/hour everywhere  
+Temperature range: Should be -10°C to 50°C everywhere
+Purification rate: Should be 99.9% everywhere
+Power source: Should be "Solar (20W panel)" everywhere
+
+PRICING TO VERIFY:
+USD: $299, EUR: €279, GBP: £259, JPY: ¥32,000, INR: ₹24,999
+
+BRAND ELEMENTS:
+Product name: "AquaPure Solar" (exact spelling)
+Company name: "EcoTech Solutions" (exact spelling)
+
+[PASTE ALL YOUR TEAM'S CONTENT HERE]
+
+Identify:
+✅ CONSISTENT: [What matches correctly]
+⚠️ DISCREPANCIES: [What needs fixing]  
+🚨 CRITICAL ISSUES: [What could harm launch]</div>
+            </div>
+
+            <div class="score-card">
+                <h4>Consistency Results:</h4>
+                <div class="score-item">
+                    <span>Technical Specifications Consistent:</span>
+                    <select class="score-input" id="tech-consistency">
+                        <option value="">-</option>
+                        <option value="100">✅ All Match</option>
+                        <option value="75">⚠️ Minor Issues</option>
+                        <option value="50">🚨 Major Issues</option>
+                        <option value="0">❌ Critical Errors</option>
+                    </select>
+                </div>
+                <div class="score-item">
+                    <span>Pricing Accuracy:</span>
+                    <select class="score-input" id="pricing-accuracy">
+                        <option value="">-</option>
+                        <option value="100">✅ All Accurate</option>
+                        <option value="75">⚠️ Minor Variance</option>
+                        <option value="50">🚨 Major Variance</option>
+                        <option value="0">❌ Critical Errors</option>
+                    </select>
+                </div>
+                <div class="score-item">
+                    <span>Brand Consistency:</span>
+                    <select class="score-input" id="brand-consistency">
+                        <option value="">-</option>
+                        <option value="100">✅ Perfect</option>
+                        <option value="75">⚠️ Minor Issues</option>
+                        <option value="50">🚨 Spelling Errors</option>
+                        <option value="0">❌ Major Errors</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 3: Translation Quality -->
+        <div class="validation-section">
+            <h2>🌍 Phase 3: Translation Quality (3 minutes)</h2>
+            
+            <div class="prompt-box">
+                <h4>🤖 ChatGPT Prompt - Copy & Paste:</h4>
+                <div class="code-block">Evaluate these AquaPure Solar translations (rate 1-10 each):
+
+ORIGINAL ENGLISH: [Paste English content]
+SPANISH: [Paste Spanish content]  
+JAPANESE: [Paste Japanese content]
+GERMAN: [Paste German content]
+HINDI: [Paste Hindi content]
+
+For each language, rate:
+1. Technical Accuracy (1-10)
+2. Cultural Appropriateness (1-10)
+3. Brand Voice Consistency (1-10)
+4. Grammar/Readability (1-10)
+
+Format:
+SPANISH: Technical: X/10, Cultural: X/10, Brand: X/10, Grammar: X/10, OVERALL: X/10
+[Repeat for each language]
+
+SUMMARY:
+Best Translation: [Language]
+Needs Most Work: [Language]  
+Launch-Ready: [Languages scoring 8+]</div>
+            </div>
+
+            <div class="score-card">
+                <h4>Translation Quality Scores (1-10):</h4>
+                <div class="score-item">
+                    <span>Spanish Translation:</span>
+                    <input type="number" class="score-input" id="spanish-score" min="1" max="10" placeholder="1-10">
+                </div>
+                <div class="score-item">
+                    <span>Japanese Translation:</span>
+                    <input type="number" class="score-input" id="japanese-score" min="1" max="10" placeholder="1-10">
+                </div>
+                <div class="score-item">
+                    <span>German Translation:</span>
+                    <input type="number" class="score-input" id="german-score" min="1" max="10" placeholder="1-10">
+                </div>
+                <div class="score-item">
+                    <span>Hindi Translation:</span>
+                    <input type="number" class="score-input" id="hindi-score" min="1" max="10" placeholder="1-10">
+                </div>
+                <div class="score-item">
+                    <span><strong>Average Translation Quality:</strong></span>
+                    <span id="avg-translation" style="font-weight: bold;">-/10</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 4: Final Quality Assessment -->
+        <div class="validation-section">
+            <h2>📊 Phase 4: Final Quality Assessment (1 minute)</h2>
+            
+            <div class="prompt-box">
+                <h4>🤖 ChatGPT Prompt - Copy & Paste:</h4>
+                <div class="code-block">Provide overall launch readiness assessment:
+
+CONTENT REVIEWED:
+- Product descriptions in 5 languages
+- 3 LinkedIn profiles  
+- Customer sentiment analysis
+- 2 automation workflows
+- Consistency validation results
+- Translation quality scores
+
+Provide:
+1. OVERALL LAUNCH READINESS SCORE (0-100)
+2. LAUNCH RECOMMENDATION:
+   85-100: 🥇 LAUNCH HERO - Proceed immediately
+   70-84: 🥈 LAUNCH SAVER - Minor fixes, 24hr delay
+   55-69: 🥉 CRISIS MANAGER - Major fixes, 1 week delay  
+   <55: ❌ MISSION FAILED - Extensive rework needed
+
+3. TOP 3 STRENGTHS
+4. TOP 3 IMPROVEMENT AREAS
+5. CONFIDENCE LEVEL (1-10)</div>
+            </div>
+
+            <div class="score-card">
+                <h4>Final Assessment:</h4>
+                <div class="score-item">
+                    <span>Overall Launch Readiness Score:</span>
+                    <input type="number" class="score-input" id="final-score" min="0" max="100" placeholder="0-100">
+                    <span>/100</span>
+                </div>
+                <div class="score-item">
+                    <span>Confidence Level:</span>
+                    <input type="number" class="score-input" id="confidence" min="1" max="10" placeholder="1-10">
+                    <span>/10</span>
+                </div>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+            </div>
+            <div id="progress-text" style="text-align: center; margin-top: 10px;">Enter your final score to see launch recommendation</div>
+        </div>
+
+        <!-- Launch Decision -->
+        <div class="validation-section">
+            <h2>🎯 Launch Decision</h2>
+            <div id="launch-decision" class="result-box" style="background: #f8f9fa; color: #6c757d;">
+                Complete the assessment above to get your launch recommendation
+            </div>
+            
+            <div style="text-align: center; margin-top: 20px;">
+                <button class="btn btn-primary" onclick="calculateResults()">📊 Calculate Final Results</button>
+                <button class="btn btn-success" onclick="exportResults()">📋 Export Assessment</button>
+            </div>
+        </div>
+
+        <!-- Quality Gates Reference -->
+        <div class="validation-section">
+            <h2>🚨 Quality Gates Reference</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div>
+                    <h4 style="color: #e74c3c;">🚫 Launch Blockers:</h4>
+                    <ul>
+                        <li>Technical specification inconsistency</li>
+                        <li>Product name spelled incorrectly</li>
+                        <li>Pricing errors >10% from target</li>
+                        <li>Translation accuracy <6/10 for major market</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: #27ae60;">✅ Launch Ready:</h4>
+                    <ul>
+                        <li>All technical specs consistent</li>
+                        <li>Translation quality >8/10 average</li>
+                        <li>No critical brand inconsistencies</li>
+                        <li>Overall quality score >85/100</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calculateResults() {
+            // Get all scores
+            const techConsistency = parseInt(document.getElementById('tech-consistency').value) || 0;
+            const pricingAccuracy = parseInt(document.getElementById('pricing-accuracy').value) || 0;
+            const brandConsistency = parseInt(document.getElementById('brand-consistency').value) || 0;
+            
+            const spanishScore = parseInt(document.getElementById('spanish-score').value) || 0;
+            const japaneseScore = parseInt(document.getElementById('japanese-score').value) || 0;
+            const germanScore = parseInt(document.getElementById('german-score').value) || 0;
+            const hindiScore = parseInt(document.getElementById('hindi-score').value) || 0;
+            
+            const finalScore = parseInt(document.getElementById('final-score').value) || 0;
+            const confidence = parseInt(document.getElementById('confidence').value) || 0;
+            
+            // Calculate average translation score
+            const translationScores = [spanishScore, japaneseScore, germanScore, hindiScore].filter(score => score > 0);
+            const avgTranslation = translationScores.length > 0 ? 
+                (translationScores.reduce((a, b) => a + b, 0) / translationScores.length).toFixed(1) : 0;
+            
+            document.getElementById('avg-translation').textContent = avgTranslation + '/10';
+            
+            // Update progress bar and decision
+            updateLaunchDecision(finalScore, confidence);
+        }
+        
+        function updateLaunchDecision(score, confidence) {
+            const progressFill = document.getElementById('progress-fill');
+            const progressText = document.getElementById('progress-text');
+            const launchDecision = document.getElementById('launch-decision');
+            
+            progressFill.style.width = score + '%';
+            progressText.textContent = `Launch Readiness: ${score}/100`;
+            
+            let decision, className;
+            
+            if (score >= 85) {
+                decision = '🥇 LAUNCH HERO - Proceed with launch immediately! The $2M is secure.';
+                className = 'result-excellent';
+            } else if (score >= 70) {
+                decision = '🥈 LAUNCH SAVER - Minor fixes needed, launch in 24 hours.';
+                className = 'result-good';
+            } else if (score >= 55) {
+                decision = '🥉 CRISIS MANAGER - Major fixes required, delay launch 1 week.';
+                className = 'result-warning';
+            } else {
+                decision = '❌ MISSION FAILED - Extensive rework needed, launch canceled.';
+                className = 'result-danger';
+            }
+            
+            launchDecision.textContent = decision;
+            launchDecision.className = 'result-box ' + className;
+        }
+        
+        function exportResults() {
+            const results = {
+                timestamp: new Date().toISOString(),
+                techConsistency: document.getElementById('tech-consistency').value,
+                pricingAccuracy: document.getElementById('pricing-accuracy').value,
+                brandConsistency: document.getElementById('brand-consistency').value,
+                translationScores: {
+                    spanish: document.getElementById('spanish-score').value,
+                    japanese: document.getElementById('japanese-score').value,
+                    german: document.getElementById('german-score').value,
+                    hindi: document.getElementById('hindi-score').value
+                },
+                finalScore: document.getElementById('final-score').value,
+                confidence: document.getElementById('confidence').value
+            };
+            
+            const blob = new Blob([JSON.stringify(results, null, 2)], {type: 'application/json'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'ecotech_quality_assessment.json';
+            a.click();
+        }
+        
+        // Auto-calculate when scores change
+        document.addEventListener('input', function(e) {
+            if (e.target.type === 'number' || e.target.tagName === 'SELECT') {
+                calculateResults();
+            }
+        });
+    </script>
+</body>
+</html>

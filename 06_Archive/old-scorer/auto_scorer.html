@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoTech Auto-Scorer</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f5f5f5; margin: 0; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; text-align: center; margin-bottom: 30px; }
+        .upload-section { background: white; border-radius: 10px; padding: 25px; margin: 20px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .upload-area { border: 2px dashed #3498db; border-radius: 10px; padding: 40px; text-align: center; margin: 20px 0; cursor: pointer; transition: all 0.3s; }
+        .upload-area:hover { background: #f8f9fa; border-color: #2980b9; }
+        .upload-area.dragover { background: #e3f2fd; border-color: #1976d2; }
+        textarea { width: 100%; min-height: 150px; padding: 15px; border: 1px solid #ddd; border-radius: 5px; font-family: monospace; font-size: 14px; }
+        .btn { padding: 12px 25px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; margin: 10px 5px; transition: all 0.3s; }
+        .btn-primary { background: #3498db; color: white; }
+        .btn-primary:hover { background: #2980b9; }
+        .btn-success { background: #27ae60; color: white; }
+        .btn-success:hover { background: #229954; }
+        .btn-danger { background: #e74c3c; color: white; }
+        .scoring-results { background: white; border-radius: 10px; padding: 25px; margin: 20px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.1); display: none; }
+        .score-item { display: flex; justify-content: space-between; align-items: center; padding: 15px; margin: 10px 0; border-radius: 8px; }
+        .score-excellent { background: #d4edda; color: #155724; }
+        .score-good { background: #d1ecf1; color: #0c5460; }
+        .score-warning { background: #fff3cd; color: #856404; }
+        .score-poor { background: #f8d7da; color: #721c24; }
+        .progress-circle { width: 100px; height: 100px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: bold; margin: 0 auto; }
+        .loading { display: none; text-align: center; padding: 40px; }
+        .spinner { border: 4px solid #f3f3f3; border-top: 4px solid #3498db; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .tab-nav { display: flex; margin-bottom: 20px; }
+        .tab-btn { padding: 10px 20px; background: #ecf0f1; border: none; cursor: pointer; margin-right: 5px; border-radius: 5px 5px 0 0; }
+        .tab-btn.active { background: #3498db; color: white; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .artifact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0; }
+        .feedback-box { background: #f8f9fa; border-left: 4px solid #3498db; padding: 15px; margin: 15px 0; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 EcoTech Auto-Scorer</h1>
+            <p>Automated Quality Assessment for Crisis Workshop Artifacts</p>
+        </div>
+
+        <!-- Tab Navigation -->
+        <div class="tab-nav">
+            <button class="tab-btn active" onclick="showTab('upload')">📤 Upload Artifacts</button>
+            <button class="tab-btn" onclick="showTab('results')">📊 Scoring Results</button>
+            <button class="tab-btn" onclick="showTab('feedback')">💬 Detailed Feedback</button>
+        </div>
+
+        <!-- Upload Tab -->
+        <div id="upload" class="tab-content active">
+            <div class="upload-section">
+                <h2>📋 Submit Your Team's Artifacts</h2>
+                <p>Upload or paste all content created during the crisis workshop for automatic scoring.</p>
+
+                <div class="artifact-grid">
+                    <div>
+                        <h3>🌍 Content Creation (30 points)</h3>
+                        <textarea id="translations" placeholder="Paste all 5 product translations here:
+English: [content]
+Spanish: [content]  
+Japanese: [content]
+German: [content]
+Hindi: [content]"></textarea>
+                        
+                        <textarea id="linkedin" placeholder="Paste all 3 LinkedIn profiles here:
+Maria Santos: [profile]
+Hiroshi Tanaka: [profile]
+Priya Sharma: [profile]"></textarea>
+                    </div>
+                    
+                    <div>
+                        <h3>💬 Customer Intelligence (25 points)</h3>
+                        <textarea id="sentiment" placeholder="Paste your sentiment analysis results:
+Review 1: Score: X.X, Emotion: [emotion], Action: [action]
+Review 2: Score: X.X, Emotion: [emotion], Action: [action]
+...
+Overall Summary: [summary]
+Top 3 Issues: [issues]
+Response Templates: [templates]"></textarea>
+                    </div>
+                </div>
+
+                <div class="artifact-grid">
+                    <div>
+                        <h3>⚡ Automation Setup (25 points)</h3>
+                        <textarea id="workflows" placeholder="Paste your 2 workflow designs:
+CUSTOMER SUPPORT WORKFLOW:
+Trigger: [trigger]
+Steps: [list steps]
+Escalation Rules: [rules]
+
+SOCIAL MEDIA WORKFLOW:
+Trigger: [trigger]  
+Steps: [list steps]
+Response Templates: [templates]"></textarea>
+                    </div>
+                    
+                    <div>
+                        <h3>🔍 Data Quality (20 points)</h3>
+                        <textarea id="validation" placeholder="Paste your quality validation results:
+CONSISTENCY CHECK:
+✅ Consistent: [items]
+⚠️ Issues Found: [items]
+🚨 Critical: [items]
+
+TRANSLATION QUALITY:
+Spanish: X/10
+Japanese: X/10  
+German: X/10
+Hindi: X/10
+Average: X/10"></textarea>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin: 30px 0;">
+                    <button class="btn btn-primary" onclick="startAutoScoring()">🤖 Start Auto-Scoring</button>
+                    <button class="btn btn-success" onclick="loadSampleData()">📝 Load Sample Data</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Tab -->
+        <div id="results" class="tab-content">
+            <div class="scoring-results" id="scoring-results">
+                <h2>📊 Automated Scoring Results</h2>
+                
+                <div style="text-align: center; margin: 30px 0;">
+                    <div class="progress-circle" id="overall-score">-</div>
+                    <h3 id="score-label">Overall Score</h3>
+                    <div id="launch-decision" style="font-size: 18px; font-weight: bold; margin: 20px 0;">Complete scoring to see recommendation</div>
+                </div>
+
+                <div id="detailed-scores">
+                    <div class="score-item" id="content-score">
+                        <span><strong>Content Quality (30 points)</strong></span>
+                        <span id="content-points">-/30</span>
+                    </div>
+                    <div class="score-item" id="intelligence-score">
+                        <span><strong>Customer Intelligence (25 points)</strong></span>
+                        <span id="intelligence-points">-/25</span>
+                    </div>
+                    <div class="score-item" id="automation-score">
+                        <span><strong>Automation Setup (25 points)</strong></span>
+                        <span id="automation-points">-/25</span>
+                    </div>
+                    <div class="score-item" id="quality-score">
+                        <span><strong>Data Quality (20 points)</strong></span>
+                        <span id="quality-points">-/20</span>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin: 30px 0;">
+                    <button class="btn btn-success" onclick="exportResults()">📋 Export Results</button>
+                    <button class="btn btn-primary" onclick="showTab('feedback')">💬 View Detailed Feedback</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Feedback Tab -->
+        <div id="feedback" class="tab-content">
+            <div class="upload-section">
+                <h2>💬 Detailed Feedback & Recommendations</h2>
+                <div id="feedback-content">
+                    <p>Complete the auto-scoring to receive detailed feedback on your team's performance.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading Animation -->
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <h3>🤖 AI is analyzing your artifacts...</h3>
+            <p>This may take 30-60 seconds</p>
+        </div>
+    </div>
+
+    <script>
+        let scoringResults = {};
+
+        function showTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+            
+            // Show results if available
+            if (tabName === 'results' && Object.keys(scoringResults).length > 0) {
+                document.getElementById('scoring-results').style.display = 'block';
+            }
+        }
+
+        function loadSampleData() {
+            document.getElementById('translations').value = `English: AquaPure Solar - Revolutionary water purification device. Solar-powered operation, 99.9% bacteria removal, portable (2.5kg), 10L/hour capacity, IoT monitoring, -10°C to 50°C range, $299.
+
+Spanish: AquaPure Solar - Dispositivo revolucionario de purificación de agua. Funcionamiento solar, eliminación 99.9% bacterias, portátil (2.5kg), capacidad 10L/hora, monitoreo IoT, rango -10°C a 50°C, $299.
+
+Japanese: AquaPure Solar - 革新的な水質浄化装置。ソーラー駆動、99.9%バクテリア除去、ポータブル(2.5kg)、10L/時間容量、IoTモニタリング、-10°C〜50°C範囲、$299。
+
+German: AquaPure Solar - Revolutionäres Wasserreinigungsgerät. Solarbetrieb, 99,9% Bakterienentfernung, tragbar (2,5kg), 10L/Stunde Kapazität, IoT-Überwachung, -10°C bis 50°C Bereich, $299.
+
+Hindi: AquaPure Solar - क्रांतिकारी जल शुद्धीकरण उपकरण। सोलर संचालित, 99.9% बैक्टीरिया हटाना, पोर्टेबल (2.5kg), 10L/घंटा क्षमता, IoT निगरानी, -10°C से 50°C रेंज, $299।`;
+
+            document.getElementById('linkedin').value = `Maria Santos: Regional Sales Manager - Southern Europe at EcoTech Solutions | Water Technology Expert | 5+ Years B2B Sales Leadership. Passionate sales professional with proven track record in water technology sector. MBA from Universidad de Barcelona. Increased regional sales by 150% in previous role. Managed €2M territory. Built partnerships with 25+ distributors across Spain and Portugal.
+
+Hiroshi Tanaka: Regional Sales Manager - Asia Pacific at EcoTech Solutions | Sustainable Technology Innovation Leader | 8+ Years Tech Sales. Engineering background from Tokyo Institute of Technology. Led $5M solar technology rollout across Japan. Established partnerships with 15 major retailers. Expert in Japanese regulatory compliance for water products.
+
+Priya Sharma: Regional Sales Manager - South Asia at EcoTech Solutions | Rural Development & Water Access Specialist | 6+ Years Impact-Driven Sales. MS Environmental Engineering from IIT Delhi. Implemented water solutions for 100+ rural communities. Managed $3M government contract for clean water initiative. Built network of 50+ NGO partnerships.`;
+
+            document.getElementById('sentiment').value = `Review Analysis Results:
+Review 1: Score: 0.95, Emotion: Excitement, Action: Feature in testimonials, Priority: High
+Review 2: Score: 0.65, Emotion: Mild disappointment, Action: Investigate performance claims, Priority: Medium  
+Review 3: Score: 0.15, Emotion: Anger, Action: Immediate escalation, Priority: Urgent
+Review 4: Score: 0.88, Emotion: Satisfaction, Action: Highlight IoT features, Priority: High
+Review 5: Score: 0.55, Emotion: Indifferent, Action: Follow up for details, Priority: Low
+
+Overall Summary: Average sentiment 0.63/1.0, 40% positive, 20% negative
+Top 3 Issues: 1) Device reliability failure, 2) Performance claims accuracy, 3) Customer service response time
+Response Templates: Created professional templates for positive, negative, and mixed sentiment responses`;
+
+            document.getElementById('workflows').value = `CUSTOMER SUPPORT WORKFLOW:
+Trigger: New support ticket received via email
+Steps: 1) Extract ticket info, 2) Analyze sentiment with ChatGPT, 3) Categorize issue type, 4) Set priority level, 5) Route to appropriate team, 6) Send auto-acknowledgment, 7) Create follow-up reminders, 8) Log in CRM
+Escalation Rules: Sentiment <0.3 + Technical = Urgent, Multiple tickets = Manager alert, Keywords "broken/lawsuit" = Immediate escalation
+
+SOCIAL MEDIA WORKFLOW:  
+Trigger: Brand mention detected on social platforms
+Steps: 1) Extract mention details, 2) Analyze sentiment, 3) Determine response strategy, 4) Generate response, 5) Route for approval if negative, 6) Post response, 7) Log in CRM, 8) Monitor for crisis
+Response Templates: Positive: "Thanks for the love! 🌟", Negative: "Sorry to hear this. Please DM us to resolve."`;
+
+            document.getElementById('validation').value = `CONSISTENCY CHECK:
+✅ Consistent: Weight 2.5kg, Purification rate 99.9%, Company name "EcoTech Solutions", Product name "AquaPure Solar"
+⚠️ Issues Found: EUR pricing €279 seems 3% low, Temperature format varies by language (acceptable)
+🚨 Critical: None found - all technical specs match
+
+TRANSLATION QUALITY:
+Spanish: 9.5/10 (Excellent cultural adaptation, perfect technical accuracy)
+Japanese: 8.7/10 (Good quality, minor brand voice adjustment needed)
+German: 9.2/10 (Excellent technical focus, appropriate for market)
+Hindi: 6.5/10 (Technical accuracy good, cultural tone needs work)
+Average: 8.5/10 - Launch ready for most markets`;
+
+            alert('✅ Sample data loaded! Click "Start Auto-Scoring" to see how it works.');
+        }
+
+        async function startAutoScoring() {
+            // Show loading
+            document.getElementById('loading').style.display = 'block';
+            
+            // Simulate AI processing time
+            await new Promise(resolve => setTimeout(resolve, 3000));
+            
+            // Get content
+            const translations = document.getElementById('translations').value;
+            const linkedin = document.getElementById('linkedin').value;
+            const sentiment = document.getElementById('sentiment').value;
+            const workflows = document.getElementById('workflows').value;
+            const validation = document.getElementById('validation').value;
+            
+            // Score each category
+            const contentScore = scoreContentQuality(translations, linkedin);
+            const intelligenceScore = scoreCustomerIntelligence(sentiment);
+            const automationScore = scoreAutomationSetup(workflows);
+            const qualityScore = scoreDataQuality(validation);
+            
+            const totalScore = contentScore + intelligenceScore + automationScore + qualityScore;
+            
+            // Store results
+            scoringResults = {
+                content: contentScore,
+                intelligence: intelligenceScore,
+                automation: automationScore,
+                quality: qualityScore,
+                total: totalScore
+            };
+            
+            // Hide loading
+            document.getElementById('loading').style.display = 'none';
+            
+            // Show results
+            displayResults();
+            generateFeedback();
+            
+            // Switch to results tab
+            showTab('results');
+        }
+
+        function scoreContentQuality(translations, linkedin) {
+            let score = 0;
+            
+            // Check if translations exist for all 5 languages
+            const languages = ['English', 'Spanish', 'Japanese', 'German', 'Hindi'];
+            const foundLanguages = languages.filter(lang => 
+                translations.toLowerCase().includes(lang.toLowerCase())
+            );
+            score += (foundLanguages.length / 5) * 10; // 10 points for completeness
+            
+            // Check translation quality indicators
+            if (translations.includes('99.9%') && translations.includes('2.5kg') && translations.includes('10L')) {
+                score += 8; // Technical accuracy
+            }
+            
+            // Check cultural adaptation
+            if (translations.includes('革新的') || translations.includes('revolucionario') || translations.includes('क्रांतिकारी')) {
+                score += 7; // Cultural adaptation
+            }
+            
+            // Check LinkedIn profiles
+            const profiles = ['Maria Santos', 'Hiroshi Tanaka', 'Priya Sharma'];
+            const foundProfiles = profiles.filter(name => 
+                linkedin.includes(name)
+            );
+            score += (foundProfiles.length / 3) * 5; // 5 points for LinkedIn completeness
+            
+            return Math.min(30, Math.round(score));
+        }
+
+        function scoreCustomerIntelligence(sentiment) {
+            let score = 0;
+            
+            // Check for sentiment analysis
+            if (sentiment.includes('Score:') && sentiment.includes('Emotion:')) {
+                score += 10; // Sentiment analysis present
+            }
+            
+            // Check for action recommendations
+            if (sentiment.includes('Action:') || sentiment.includes('Priority:')) {
+                score += 8; // Action items present
+            }
+            
+            // Check for summary and insights
+            if (sentiment.includes('Overall') || sentiment.includes('Average')) {
+                score += 7; // Summary analysis
+            }
+            
+            return Math.min(25, Math.round(score));
+        }
+
+        function scoreAutomationSetup(workflows) {
+            let score = 0;
+            
+            // Check for both workflows
+            if (workflows.toLowerCase().includes('customer support') && workflows.toLowerCase().includes('social media')) {
+                score += 10; // Both workflows present
+            }
+            
+            // Check for proper structure
+            if (workflows.includes('Trigger:') && workflows.includes('Steps:')) {
+                score += 8; // Proper structure
+            }
+            
+            // Check for escalation rules
+            if (workflows.includes('Escalation') || workflows.includes('escalation')) {
+                score += 7; // Escalation rules present
+            }
+            
+            return Math.min(25, Math.round(score));
+        }
+
+        function scoreDataQuality(validation) {
+            let score = 0;
+            
+            // Check for consistency validation
+            if (validation.includes('Consistent:') || validation.includes('✅')) {
+                score += 8; // Consistency check done
+            }
+            
+            // Check for translation quality scores
+            if (validation.includes('/10') && validation.includes('Average:')) {
+                score += 7; // Translation quality assessed
+            }
+            
+            // Check for critical issues identification
+            if (validation.includes('Critical') || validation.includes('🚨')) {
+                score += 5; // Critical issues addressed
+            }
+            
+            return Math.min(20, Math.round(score));
+        }
+
+        function displayResults() {
+            const results = scoringResults;
+            
+            // Update individual scores
+            document.getElementById('content-points').textContent = `${results.content}/30`;
+            document.getElementById('intelligence-points').textContent = `${results.intelligence}/25`;
+            document.getElementById('automation-points').textContent = `${results.automation}/25`;
+            document.getElementById('quality-points').textContent = `${results.quality}/20`;
+            
+            // Update overall score
+            document.getElementById('overall-score').textContent = results.total;
+            
+            // Color code the overall score
+            const scoreCircle = document.getElementById('overall-score');
+            if (results.total >= 85) {
+                scoreCircle.style.background = '#27ae60';
+                scoreCircle.style.color = 'white';
+            } else if (results.total >= 70) {
+                scoreCircle.style.background = '#3498db';
+                scoreCircle.style.color = 'white';
+            } else if (results.total >= 55) {
+                scoreCircle.style.background = '#f39c12';
+                scoreCircle.style.color = 'white';
+            } else {
+                scoreCircle.style.background = '#e74c3c';
+                scoreCircle.style.color = 'white';
+            }
+            
+            // Update launch decision
+            let decision;
+            if (results.total >= 85) {
+                decision = '🥇 LAUNCH HERO - Proceed with launch! $2M secured.';
+            } else if (results.total >= 70) {
+                decision = '🥈 LAUNCH SAVER - Minor fixes needed, 24-hour delay.';
+            } else if (results.total >= 55) {
+                decision = '🥉 CRISIS MANAGER - Major fixes required, 1-week delay.';
+            } else {
+                decision = '❌ MISSION FAILED - Extensive rework needed.';
+            }
+            
+            document.getElementById('launch-decision').textContent = decision;
+            
+            // Color code individual score items
+            colorCodeScoreItem('content-score', results.content, 30);
+            colorCodeScoreItem('intelligence-score', results.intelligence, 25);
+            colorCodeScoreItem('automation-score', results.automation, 25);
+            colorCodeScoreItem('quality-score', results.quality, 20);
+            
+            document.getElementById('scoring-results').style.display = 'block';
+        }
+
+        function colorCodeScoreItem(elementId, score, maxScore) {
+            const element = document.getElementById(elementId);
+            const percentage = (score / maxScore) * 100;
+            
+            if (percentage >= 85) {
+                element.className = 'score-item score-excellent';
+            } else if (percentage >= 70) {
+                element.className = 'score-item score-good';
+            } else if (percentage >= 55) {
+                element.className = 'score-item score-warning';
+            } else {
+                element.className = 'score-item score-poor';
+            }
+        }
+
+        function generateFeedback() {
+            const results = scoringResults;
+            let feedback = '<h3>🎯 Performance Analysis</h3>';
+            
+            // Content Quality Feedback
+            feedback += '<div class="feedback-box">';
+            feedback += '<h4>🌍 Content Quality (' + results.content + '/30)</h4>';
+            if (results.content >= 25) {
+                feedback += '<p>✅ <strong>Excellent:</strong> High-quality translations with good cultural adaptation. All required content delivered.</p>';
+            } else if (results.content >= 20) {
+                feedback += '<p>⚠️ <strong>Good:</strong> Solid content creation but some improvements needed in translation quality or completeness.</p>';
+            } else {
+                feedback += '<p>🚨 <strong>Needs Work:</strong> Missing content or significant quality issues. Review translation accuracy and completeness.</p>';
+            }
+            feedback += '</div>';
+            
+            // Customer Intelligence Feedback
+            feedback += '<div class="feedback-box">';
+            feedback += '<h4>💬 Customer Intelligence (' + results.intelligence + '/25)</h4>';
+            if (results.intelligence >= 20) {
+                feedback += '<p>✅ <strong>Excellent:</strong> Thorough sentiment analysis with actionable insights and clear priorities.</p>';
+            } else if (results.intelligence >= 15) {
+                feedback += '<p>⚠️ <strong>Good:</strong> Basic sentiment analysis completed but could use more detailed action recommendations.</p>';
+            } else {
+                feedback += '<p>🚨 <strong>Needs Work:</strong> Incomplete sentiment analysis. Need better insights and action plans.</p>';
+            }
+            feedback += '</div>';
+            
+            // Automation Feedback
+            feedback += '<div class="feedback-box">';
+            feedback += '<h4>⚡ Automation Setup (' + results.automation + '/25)</h4>';
+            if (results.automation >= 20) {
+                feedback += '<p>✅ <strong>Excellent:</strong> Well-designed workflows with proper escalation rules and business logic.</p>';
+            } else if (results.automation >= 15) {
+                feedback += '<p>⚠️ <strong>Good:</strong> Basic workflows created but need more detailed escalation rules or steps.</p>';
+            } else {
+                feedback += '<p>🚨 <strong>Needs Work:</strong> Incomplete workflow design. Need clearer steps and escalation procedures.</p>';
+            }
+            feedback += '</div>';
+            
+            // Data Quality Feedback
+            feedback += '<div class="feedback-box">';
+            feedback += '<h4>🔍 Data Quality (' + results.quality + '/20)</h4>';
+            if (results.quality >= 17) {
+                feedback += '<p>✅ <strong>Excellent:</strong> Comprehensive quality validation with clear consistency checks and translation assessment.</p>';
+            } else if (results.quality >= 12) {
+                feedback += '<p>⚠️ <strong>Good:</strong> Basic quality checks completed but could be more thorough in validation.</p>';
+            } else {
+                feedback += '<p>🚨 <strong>Needs Work:</strong> Insufficient quality validation. Need systematic consistency and accuracy checks.</p>';
+            }
+            feedback += '</div>';
+            
+            // Overall Recommendations
+            feedback += '<div class="feedback-box">';
+            feedback += '<h4>🎯 Recommendations for Improvement</h4>';
+            feedback += '<ul>';
+            if (results.content < 25) feedback += '<li>Improve translation quality and cultural adaptation</li>';
+            if (results.intelligence < 20) feedback += '<li>Provide more detailed sentiment analysis and action plans</li>';
+            if (results.automation < 20) feedback += '<li>Add more comprehensive escalation rules to workflows</li>';
+            if (results.quality < 17) feedback += '<li>Implement more systematic quality validation processes</li>';
+            feedback += '</ul>';
+            feedback += '</div>';
+            
+            document.getElementById('feedback-content').innerHTML = feedback;
+        }
+
+        function exportResults() {
+            const results = {
+                timestamp: new Date().toISOString(),
+                teamName: prompt('Enter your team name:') || 'Anonymous Team',
+                scores: scoringResults,
+                launchDecision: document.getElementById('launch-decision').textContent
+            };
+            
+            const blob = new Blob([JSON.stringify(results, null, 2)], {type: 'application/json'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `ecotech_auto_score_${results.teamName.replace(/\s+/g, '_')}.json`;
+            a.click();
+        }
+    </script>
+</body>
+</html>

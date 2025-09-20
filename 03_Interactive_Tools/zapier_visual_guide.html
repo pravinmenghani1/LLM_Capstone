@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zapier Workflow Visual Guide</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f5f5f5; margin: 0; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .workflow { background: white; border-radius: 10px; padding: 30px; margin: 30px 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .workflow h2 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px; }
+        .step { display: flex; align-items: center; margin: 20px 0; padding: 15px; border-radius: 8px; }
+        .step-trigger { background: #e74c3c; color: white; }
+        .step-action { background: #3498db; color: white; }
+        .step-condition { background: #f39c12; color: white; }
+        .step-output { background: #27ae60; color: white; }
+        .step-number { background: rgba(255,255,255,0.3); border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 15px; }
+        .step-content { flex: 1; }
+        .step-title { font-weight: bold; font-size: 1.1em; margin-bottom: 5px; }
+        .step-details { font-size: 0.9em; opacity: 0.9; }
+        .arrow { text-align: center; font-size: 2em; color: #7f8c8d; margin: 10px 0; }
+        .code-block { background: #2c3e50; color: #ecf0f1; padding: 15px; border-radius: 5px; font-family: monospace; margin: 10px 0; overflow-x: auto; }
+        .example-box { background: #ecf0f1; border-left: 4px solid #3498db; padding: 15px; margin: 15px 0; }
+        .escalation-box { background: #ffebee; border-left: 4px solid #e74c3c; padding: 15px; margin: 15px 0; }
+        .nav-tabs { display: flex; margin-bottom: 20px; }
+        .nav-tab { padding: 10px 20px; background: #bdc3c7; color: white; cursor: pointer; margin-right: 5px; border-radius: 5px 5px 0 0; }
+        .nav-tab.active { background: #3498db; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="text-align: center; color: #2c3e50;">🔧 Zapier Workflow Visual Guide</h1>
+        
+        <div class="nav-tabs">
+            <div class="nav-tab active" onclick="showTab('support')">Customer Support Workflow</div>
+            <div class="nav-tab" onclick="showTab('social')">Social Media Monitoring</div>
+        </div>
+
+        <!-- Customer Support Workflow -->
+        <div id="support" class="tab-content active">
+            <div class="workflow">
+                <h2>🎫 Customer Support Automation Workflow</h2>
+                
+                <div class="step step-trigger">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <div class="step-title">TRIGGER: New Support Ticket</div>
+                        <div class="step-details">Email arrives at support@ecotech.com</div>
+                    </div>
+                </div>
+                
+                <div class="arrow">↓</div>
+                
+                <div class="step step-action">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <div class="step-title">Extract Ticket Information</div>
+                        <div class="step-details">Parse email: customer_email, subject, message body</div>
+                    </div>
+                </div>
+                
+                <div class="example-box">
+                    <strong>Example Input:</strong><br>
+                    From: john@example.com<br>
+                    Subject: "Device stopped working"<br>
+                    Body: "My AquaPure Solar stopped working after 2 weeks..."
+                </div>
+                
+                <div class="arrow">↓</div>
+                
+                <div class="step step-action">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <div class="step-title">Analyze Sentiment (ChatGPT API)</div>
+                        <div class="step-details">Get sentiment score (0.0-1.0) and emotion</div>
+                    </div>
+                </div>
+                
+                <div class="code-block">
+Prompt: "Analyze sentiment of this support ticket:
+Subject: {{ticket_subject}}
+Message: {{ticket_body}}
+Return: Score: X.X, Emotion: [emotion], Urgency: [level]"
+
+Output: "Score: 0.2, Emotion: Frustrated, Urgency: high"
+                </div>
+                
+                <div class="arrow">↓</div>
+                
+                <div class="step step-action">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <div class="step-title">Categorize Issue Type (ChatGPT API)</div>
+                        <div class="step-details">Classify as: TECHNICAL, BILLING, SHIPPING, GENERAL</div>
+                    </div>
+                </div>
+                
+                <div class="example-box">
+                    <strong>Example Output:</strong> "TECHNICAL"
+                </div>
+                
+                <div class="arrow">↓</div>
+                
+                <div class="step step-condition">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <div class="step-title">Set Priority Level</div>
+                        <div class="step-details">Logic: Sentiment + Category + Urgency → Priority</div>
+                    </div>
+                </div>
+                
+                <div class="code-block">
+Priority Logic:
+• Sentiment < 0.3 + TECHNICAL = URGENT
+• Sentiment < 0.4 OR high urgency = HIGH  
+• BILLING/SHIPPING = MEDIUM
+• Everything else = LOW
+                </div>
+                
+                <div class="arrow">↓</div>
+                
+                <div class="step step-condition">
+                    <div class="step-number">6</div>
+                    <div class="step-content">
+                        <div class="step-title">Route to Appropriate Team</div>
+                        <div class="step-details">Based on category and priority</div>
+                    </div>
+                </div>
+                
+                <div class="example-box">
+                    <strong>Routing Rules:</strong><br>
+                    TECHNICAL + URGENT → tech-urgent@ecotech.com + #tech-emergency Slack<br>
+                    TECHNICAL → tech-support@ecotech.com<br>
+                    BILLING → billing@ecotech.com<br>
+                    SHIPPING → logistics@ecotech.com
+                </div>
+                
+                <div class="arrow">↓</div>
+                
+                <div class="step step-output">
+                    <div class="step-number">7</div>
+                    <div class="step-content">
+                        <div class="step-title">Send Auto-Acknowledgment</div>
+                        <div class="step-details">Personalized email with ticket ID and expected response time</div>
+                    </div>
+                </div>
+                
+                <div class="code-block">
+Email Template:
+"Dear {{customer_name}},
+We've received your support request #{{ticket_id}}.
+Priority: {{priority}}
+Expected Response: {{response_time}}
+Assigned Team: {{assigned_team}}"
+                </div>
+                
+                <div class="arrow">↓</div>
+                
+                <div class="step step-action">
+                    <div class="step-number">8</div>
+                    <div class="step-content">
+                        <div class="step-title">Create Follow-up Reminders</div>
+                        <div class="step-details">Automated reminders based on priority level</div>
+                    </div>
+                </div>
+                
+                <div class="arrow">↓</div>
+                
+                <div class="step step-output">
+                    <div class="step-number">9</div>
+                    <div class="step-content">
+                        <div class="step-title">Log in CRM</div>
+                        <div class="step-details">Create case, link to customer, track metrics</div>
+                    </div>
+                </div>
+                
+                <div class="escalation-box">
+                    <strong>🚨 ESCALATION RULES:</strong><br>
+                    • Sentiment < 0.2 + TECHNICAL → Immediate escalation<br>
+                    • Keywords: "broken", "defective", "lawsuit" → Manager alert<br>
+                    • No response in SLA time → Auto-escalate<br>
+                    • Multiple tickets from same customer → Flag for review
+                </div>
+            </div>
+        </div>
+
+        <!-- Social Media Monitoring Workflow -->
+        <div id="social" class="tab-content">
+            <div class="workflow">
+                <h2>📱 Social Media Monitoring Workflow</h2>
+                
+                <div class="step step-trigger">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <div class="step-title">TRIGGER: Brand Mention Detected</div>
+                        <div class="step-details">Keywords: "AquaPure Solar", "EcoTech Solutions", "@EcoTechSolar"</div>
+                    </div>
+                </div>
+                
+                <div class="arrow">↓</div>
+                
+                <div class="step step-action">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <div class="step-title">Extract Mention Details</div>
+                        <div class="step-details">Platform, username, content, follower count, URL</div>
+                    </div>
+                </div>
+                
+                <div class="example-box">
+                    <strong>Example:</strong><br>
+                    Platform: Twitter<br>
+                    User: @outdoorlover123 (5,000 followers)<br>
+                    Post: "My AquaPure Solar broke during camping trip. Terrible!"
+                </div>
+                
+                <div class="arrow">↓</div>
+                
+                <div class="step step-action">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <div class="step-title">Analyze Sentiment (ChatGPT API)</div>
+                        <div class="step-details">Score, emotion, influence level, response needed, urgency</div>
+                    </div>
+                </div>
+                
+                <div class="code-block">
+Output: "Score: 0.2 | Emotion: angry | Influence: medium | Respond: yes | Urgency: high"
+                </div>
+                
+                <div class="arrow">↓</div>
+                
+                <div class="step step-condition">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <div class="step-title">Determine Response Strategy</div>
+                        <div class="step-details">Based on sentiment score and influence level</div>
+                    </div>
+                </div>
+                
+                <div class="example-box">
+                    <strong>Response Logic:</strong><br>
+                    Sentiment ≥ 0.7 → THANK (auto-respond)<br>
+                    Sentiment ≥ 0.4 → HELPFUL (auto-respond)<br>
+                    Sentiment < 0.4 + High influence → DAMAGE_CONTROL (needs approval)<br>
+                    Sentiment < 0.4 → APOLOGIZE (needs approval)
+                </div>
+                
+                <div class="arrow">↓</div>
+                
+                <div class="step step-action">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <div class="step-title">Generate Response Content (ChatGPT API)</div>
+                        <div class="step-details">Professional, on-brand response under 280 characters</div>
+                    </div>
+                </div>
+                
+                <div class="code-block">
+Example Responses:
+POSITIVE: "Thanks for the amazing feedback! 🌟 We're thrilled AquaPure Solar is working great for your adventures!"
+
+NEGATIVE: "We're sorry to hear about your experience. Please DM us your order details so we can help resolve this immediately. 💙"
+                </div>
+                
+                <div class="arrow">↓</div>
+                
+                <div class="step step-condition">
+                    <div class="step-number">6</div>
+                    <div class="step-content">
+                        <div class="step-title">Route for Approval (if needed)</div>
+                        <div class="step-details">Send to manager via Slack for negative/high-influence posts</div>
+                    </div>
+                </div>
+                
+                <div class="example-box">
+                    <strong>Slack Alert:</strong><br>
+                    "🚨 Social Media Response Needed<br>
+                    Platform: Twitter | User: @outdoorlover123 (5K followers)<br>
+                    Sentiment: 0.2 (angry)<br>
+                    Proposed Response: [generated response]<br>
+                    React with ✅ to approve or ❌ to edit"
+                </div>
+                
+                <div class="arrow">↓</div>
+                
+                <div class="step step-output">
+                    <div class="step-number">7</div>
+                    <div class="step-content">
+                        <div class="step-title">Post Response</div>
+                        <div class="step-details">Auto-post if approved or no approval needed</div>
+                    </div>
+                </div>
+                
+                <div class="arrow">↓</div>
+                
+                <div class="step step-output">
+                    <div class="step-number">8</div>
+                    <div class="step-content">
+                        <div class="step-title">Log in CRM</div>
+                        <div class="step-details">Record interaction, sentiment, response metrics</div>
+                    </div>
+                </div>
+                
+                <div class="arrow">↓</div>
+                
+                <div class="step step-condition">
+                    <div class="step-number">9</div>
+                    <div class="step-content">
+                        <div class="step-title">Monitor and Alert</div>
+                        <div class="step-details">Track negative mentions, sentiment trends, crisis detection</div>
+                    </div>
+                </div>
+                
+                <div class="escalation-box">
+                    <strong>🚨 CRISIS DETECTION:</strong><br>
+                    • >5 negative mentions per hour → Alert marketing team<br>
+                    • Influencer (>50K followers) negative post → Immediate escalation<br>
+                    • Viral negative content (>100 shares/hour) → PR team alert<br>
+                    • Product safety concerns → Executive escalation
+                </div>
+            </div>
+        </div>
+        
+        <div style="background: #34495e; color: white; padding: 20px; border-radius: 10px; margin-top: 30px;">
+            <h3>🛠️ Implementation Tips:</h3>
+            <ul>
+                <li><strong>Start Simple:</strong> Begin with basic sentiment analysis, add complexity gradually</li>
+                <li><strong>Test Thoroughly:</strong> Use sample data to verify all paths work correctly</li>
+                <li><strong>Monitor Performance:</strong> Track accuracy of sentiment analysis and response quality</li>
+                <li><strong>Human Oversight:</strong> Always have escalation paths for edge cases</li>
+                <li><strong>Regular Updates:</strong> Refine prompts and rules based on real-world performance</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.nav-tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>

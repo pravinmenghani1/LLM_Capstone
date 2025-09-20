@@ -1,0 +1,444 @@
+{
+  "aquapure_solar_reviews": [
+    {
+      "id": 1,
+      "text": "This device is absolutely life-changing! Used it during our 3-week trek in Nepal. Crystal clear water every single time, even from muddy streams. The solar charging works perfectly even on cloudy days. Worth every penny!",
+      "rating": 5,
+      "country": "USA",
+      "use_case": "Adventure travel",
+      "date": "2024-08-15"
+    },
+    {
+      "id": 2,
+      "text": "Good product overall, but the purification process takes longer than advertised. Claims 10L/hour but I'm getting about 7L/hour in real conditions. Still reliable though, just manage expectations.",
+      "rating": 3,
+      "country": "Germany",
+      "use_case": "Emergency preparedness",
+      "date": "2024-08-12"
+    },
+    {
+      "id": 3,
+      "text": "Complete waste of money! Device stopped working after just 2 weeks of use. Customer service is terrible - no response to my emails for 10 days. Very disappointed with this purchase.",
+      "rating": 1,
+      "country": "USA",
+      "use_case": "Camping",
+      "date": "2024-08-10"
+    },
+    {
+      "id": 4,
+      "text": "Perfect solution for our remote village clinic! We've been using it for 6 months now and it's provided clean water for over 200 patients. The IoT monitoring helps us track usage and maintenance needs.",
+      "rating": 5,
+      "country": "India",
+      "use_case": "Healthcare",
+      "date": "2024-08-08"
+    },
+    {
+      "id": 5,
+      "text": "Decent product but quite expensive for our market. The technology is impressive but the price point makes it difficult for average families to afford. Maybe consider a budget version?",
+      "rating": 3,
+      "country": "India",
+      "use_case": "Household",
+      "date": "2024-08-05"
+    },
+    {
+      "id": 6,
+      "text": "Excelente producto para nuestras expediciones. Funciona perfectamente en condiciones extremas. La batería solar dura todo el día. Muy recomendado para aventureros.",
+      "rating": 4,
+      "country": "Spain",
+      "use_case": "Adventure sports",
+      "date": "2024-08-03"
+    },
+    {
+      "id": 7,
+      "text": "Instructions are completely unclear! Took me 3 hours to figure out how to set it up properly. The device works fine once you know how, but the manual needs serious improvement.",
+      "rating": 2,
+      "country": "Germany",
+      "use_case": "Household",
+      "date": "2024-08-01"
+    },
+    {
+      "id": 8,
+      "text": "素晴らしい製品です！キャンプで使用しましたが、どんな水源からでもきれいな水が作れます。ソーラーパネルの効率も良く、曇りの日でも問題ありません。",
+      "rating": 5,
+      "country": "Japan",
+      "use_case": "Camping",
+      "date": "2024-07-30"
+    },
+    {
+      "id": 9,
+      "text": "The solar panel is too small for consistently cloudy weather. Works great on sunny days but struggles during monsoon season. Need a larger panel or backup power option.",
+      "rating": 2,
+      "country": "India",
+      "use_case": "Rural community",
+      "date": "2024-07-28"
+    },
+    {
+      "id": 10,
+      "text": "Outstanding build quality and performance! We've deployed 50 units across refugee camps and they're still working perfectly after 8 months of heavy use. Highly recommended for humanitarian applications.",
+      "rating": 5,
+      "country": "Germany",
+      "use_case": "Humanitarian aid",
+      "date": "2024-07-25"
+    },
+    {
+      "id": 11,
+      "text": "It's okay, does what it promises. Nothing spectacular but gets the job done. Build quality seems decent for the price point. Would buy again if needed.",
+      "rating": 3,
+      "country": "USA",
+      "use_case": "Emergency preparedness",
+      "date": "2024-07-22"
+    },
+    {
+      "id": 12,
+      "text": "Love the IoT features! I can monitor water quality and device status from my phone even when I'm not at the campsite. The app is user-friendly and provides useful insights.",
+      "rating": 4,
+      "country": "USA",
+      "use_case": "RV travel",
+      "date": "2024-07-20"
+    },
+    {
+      "id": 13,
+      "text": "Producto caro pero vale la pena. La calidad del agua es excelente y el diseño es muy robusto. Perfecto para nuestras actividades de montañismo en los Andes.",
+      "rating": 4,
+      "country": "Spain",
+      "use_case": "Mountaineering",
+      "date": "2024-07-18"
+    },
+    {
+      "id": 14,
+      "text": "Heavy to carry for long hikes. At 2.5kg it's manageable for car camping but too much for backpacking. Consider making a lighter version for hikers.",
+      "rating": 3,
+      "country": "Germany",
+      "use_case": "Hiking",
+      "date": "2024-07-15"
+    },
+    {
+      "id": 15,
+      "text": "यह उपकरण हमारे गांव के लिए वरदान है। साफ पानी की समस्या हल हो गई है। सोलर पैनल बहुत अच्छा काम करता है। सभी को सुझाऊंगा।",
+      "rating": 5,
+      "country": "India",
+      "use_case": "Village water supply",
+      "date": "2024-07-12"
+    },
+    {
+      "id": 16,
+      "text": "Fantastic for emergency situations! During the recent flooding, this device provided clean water for our entire neighborhood. Solar charging meant we didn't need electricity. Lifesaver!",
+      "rating": 5,
+      "country": "USA",
+      "use_case": "Emergency response",
+      "date": "2024-07-10"
+    },
+    {
+      "id": 17,
+      "text": "The water tastes slightly metallic sometimes. Not sure if it's the device or the source water, but it's noticeable. Otherwise, the purification seems effective.",
+      "rating": 3,
+      "country": "Germany",
+      "use_case": "Household",
+      "date": "2024-07-08"
+    },
+    {
+      "id": 18,
+      "text": "Overpriced for what it delivers. You can get similar results with cheaper alternatives. The solar feature is nice but not worth the premium price tag.",
+      "rating": 2,
+      "country": "USA",
+      "use_case": "Camping",
+      "date": "2024-07-05"
+    },
+    {
+      "id": 19,
+      "text": "Incredible innovation! The combination of solar power and IoT monitoring is brilliant. Perfect for our research station in Antarctica. Handles extreme cold beautifully.",
+      "rating": 5,
+      "country": "Germany",
+      "use_case": "Research",
+      "date": "2024-07-03"
+    },
+    {
+      "id": 20,
+      "text": "Setup was confusing initially, but customer support walked me through it patiently. Once running, it's been flawless for 4 months. Great investment for our off-grid cabin.",
+      "rating": 4,
+      "country": "USA",
+      "use_case": "Off-grid living",
+      "date": "2024-07-01"
+    },
+    {
+      "id": 21,
+      "text": "La aplicación móvil necesita mejoras. Se desconecta frecuentemente y la interfaz no es muy intuitiva. El dispositivo funciona bien, pero la experiencia digital es frustrante.",
+      "rating": 3,
+      "country": "Spain",
+      "use_case": "Household",
+      "date": "2024-06-28"
+    },
+    {
+      "id": 22,
+      "text": "Broke down during our most important expedition. Left us without clean water for 3 days in the desert. Completely unreliable when you need it most. Never buying again.",
+      "rating": 1,
+      "country": "USA",
+      "use_case": "Desert expedition",
+      "date": "2024-06-25"
+    },
+    {
+      "id": 23,
+      "text": "Solid performance for the price. Not the fastest purifier but very reliable. Solar charging is a game-changer for remote locations. Recommended for serious outdoor enthusiasts.",
+      "rating": 4,
+      "country": "Germany",
+      "use_case": "Outdoor recreation",
+      "date": "2024-06-22"
+    },
+    {
+      "id": 24,
+      "text": "デザインが美しく、技術的にも優れています。日本の品質基準に匹敵する製品です。価格は高めですが、性能を考えれば妥当だと思います。",
+      "rating": 4,
+      "country": "Japan",
+      "use_case": "Household",
+      "date": "2024-06-20"
+    },
+    {
+      "id": 25,
+      "text": "The warranty service is excellent! When our unit had issues after 18 months, they replaced it immediately with no questions asked. That's customer service done right.",
+      "rating": 5,
+      "country": "USA",
+      "use_case": "Household",
+      "date": "2024-06-18"
+    },
+    {
+      "id": 26,
+      "text": "Too slow for large families. Takes forever to purify enough water for 6 people. Great technology but needs higher capacity for household use.",
+      "rating": 2,
+      "country": "India",
+      "use_case": "Large family",
+      "date": "2024-06-15"
+    },
+    {
+      "id": 27,
+      "text": "Perfect for boat trips! Compact, reliable, and the solar charging means we never run out of power. Has transformed our sailing adventures. Highly recommend for marine use.",
+      "rating": 5,
+      "country": "Spain",
+      "use_case": "Marine/sailing",
+      "date": "2024-06-12"
+    },
+    {
+      "id": 28,
+      "text": "The filter replacement process is unnecessarily complicated. Why do I need special tools? Should be simple enough to do in the field. Design flaw in my opinion.",
+      "rating": 2,
+      "country": "Germany",
+      "use_case": "Camping",
+      "date": "2024-06-10"
+    },
+    {
+      "id": 29,
+      "text": "Amazing for disaster relief work! We've used these in 3 different crisis zones and they've never failed us. Robust, reliable, and the solar power is crucial when infrastructure is down.",
+      "rating": 5,
+      "country": "USA",
+      "use_case": "Disaster relief",
+      "date": "2024-06-08"
+    },
+    {
+      "id": 30,
+      "text": "हमारे स्कूल के लिए बहुत उपयोगी है। बच्चों को साफ पानी मिलता है और वे बीमार नहीं पड़ते। थोड़ा महंगा है लेकिन स्वास्थ्य के लिए जरूरी है।",
+      "rating": 4,
+      "country": "India",
+      "use_case": "School/education",
+      "date": "2024-06-05"
+    },
+    {
+      "id": 31,
+      "text": "The mobile app crashes constantly on Android. iOS version works fine but Android users are left out. Fix the app and this would be a 5-star product.",
+      "rating": 3,
+      "country": "USA",
+      "use_case": "Tech enthusiast",
+      "date": "2024-06-03"
+    },
+    {
+      "id": 32,
+      "text": "Excellent for photography expeditions in remote areas. Clean water without carrying heavy bottles. The IoT features help me track usage and plan refills. Game changer!",
+      "rating": 5,
+      "country": "Germany",
+      "use_case": "Photography",
+      "date": "2024-06-01"
+    },
+    {
+      "id": 33,
+      "text": "No funciona bien con agua muy turbia. En ríos con mucho sedimento, se obstruye rápidamente. Necesita un pre-filtro para aguas muy sucias.",
+      "rating": 2,
+      "country": "Spain",
+      "use_case": "River water",
+      "date": "2024-05-30"
+    },
+    {
+      "id": 34,
+      "text": "Outstanding customer education materials! The online tutorials and troubleshooting guides are comprehensive. Shows the company cares about user experience beyond just selling products.",
+      "rating": 4,
+      "country": "USA",
+      "use_case": "Educational use",
+      "date": "2024-05-28"
+    },
+    {
+      "id": 35,
+      "text": "冬季の使用で問題が発生しました。氷点下では効率が大幅に低下します。寒冷地での使用には改良が必要だと思います。",
+      "rating": 2,
+      "country": "Japan",
+      "use_case": "Winter camping",
+      "date": "2024-05-25"
+    },
+    {
+      "id": 36,
+      "text": "Great for van life! We've been using it for 8 months traveling across Europe. Reliable, efficient, and the solar integration with our van's system is seamless.",
+      "rating": 5,
+      "country": "Germany",
+      "use_case": "Van life",
+      "date": "2024-05-22"
+    },
+    {
+      "id": 37,
+      "text": "The LED indicators are too bright at night. Keeps everyone awake in the tent. Needs a night mode or dimmer option. Small issue but annoying during camping.",
+      "rating": 3,
+      "country": "USA",
+      "use_case": "Tent camping",
+      "date": "2024-05-20"
+    },
+    {
+      "id": 38,
+      "text": "Fantastic for our mountain rescue team! Lightweight enough for helicopter transport, reliable in extreme conditions, and the solar charging means we're never without clean water during long operations.",
+      "rating": 5,
+      "country": "Spain",
+      "use_case": "Mountain rescue",
+      "date": "2024-05-18"
+    },
+    {
+      "id": 39,
+      "text": "गुणवत्ता अच्छी है लेकिन रखरखाव महंगा है। फिल्टर बदलना और सर्विस की लागत बहुत ज्यादा है। सामान्य परिवार के लिए किफायती नहीं है।",
+      "rating": 2,
+      "country": "India",
+      "use_case": "Household maintenance",
+      "date": "2024-05-15"
+    },
+    {
+      "id": 40,
+      "text": "Perfect for scientific field work! We use it for collecting water samples in remote locations. The purification doesn't interfere with our analysis and the IoT logging helps with data collection.",
+      "rating": 5,
+      "country": "Germany",
+      "use_case": "Scientific research",
+      "date": "2024-05-12"
+    },
+    {
+      "id": 41,
+      "text": "The carrying case is poorly designed. Doesn't protect the device well during transport. Had to buy a separate protective case. Should be included for this price point.",
+      "rating": 3,
+      "country": "USA",
+      "use_case": "Travel",
+      "date": "2024-05-10"
+    },
+    {
+      "id": 42,
+      "text": "Increíble para uso en barcos pesqueros. Agua limpia durante largas jornadas en el mar. La carga solar funciona perfectamente incluso con el movimiento del barco.",
+      "rating": 4,
+      "country": "Spain",
+      "use_case": "Commercial fishing",
+      "date": "2024-05-08"
+    },
+    {
+      "id": 43,
+      "text": "Disappointing battery life on cloudy days. Claims 3 days backup but barely lasts 1 day without sun. Need better battery capacity for reliable off-grid use.",
+      "rating": 2,
+      "country": "USA",
+      "use_case": "Off-grid cabin",
+      "date": "2024-05-05"
+    },
+    {
+      "id": 44,
+      "text": "素晴らしいカスタマーサポート！製品に問題があった時、迅速に対応してくれました。技術的な質問にも詳しく答えてくれて、とても満足しています。",
+      "rating": 5,
+      "country": "Japan",
+      "use_case": "Customer service experience",
+      "date": "2024-05-03"
+    },
+    {
+      "id": 45,
+      "text": "Good for emergency kits but not daily use. The purification speed is too slow for regular household needs. Better suited for backup or emergency situations only.",
+      "rating": 3,
+      "country": "Germany",
+      "use_case": "Emergency kit",
+      "date": "2024-05-01"
+    },
+    {
+      "id": 46,
+      "text": "हमारे एनजीओ के लिए बहुत उपयोगी है। दूरदराज के गांवों में साफ पानी पहुंचाने में मदद मिली है। थोड़ा महंगा है लेकिन सामाजिक प्रभाव बहुत अच्छा है।",
+      "rating": 4,
+      "country": "India",
+      "use_case": "NGO/social work",
+      "date": "2024-04-28"
+    },
+    {
+      "id": 47,
+      "text": "The noise level is higher than expected. Not suitable for quiet environments like libraries or offices. Fine for outdoor use but too loud for indoor applications.",
+      "rating": 2,
+      "country": "USA",
+      "use_case": "Indoor use",
+      "date": "2024-04-25"
+    },
+    {
+      "id": 48,
+      "text": "Excellent for wildlife photography trips! Clean water without disturbing natural environments. The quiet operation doesn't scare away animals. Perfect for nature photographers.",
+      "rating": 5,
+      "country": "Germany",
+      "use_case": "Wildlife photography",
+      "date": "2024-04-22"
+    },
+    {
+      "id": 49,
+      "text": "La garantía internacional es excelente. Tuve problemas en Sudamérica y me enviaron repuestos rápidamente. El servicio global realmente funciona.",
+      "rating": 4,
+      "country": "Spain",
+      "use_case": "International travel",
+      "date": "2024-04-20"
+    },
+    {
+      "id": 50,
+      "text": "Overengineered for simple needs. Too many features that most people won't use. A simpler, cheaper version would appeal to more customers. Sometimes less is more.",
+      "rating": 3,
+      "country": "USA",
+      "use_case": "Simple household use",
+      "date": "2024-04-18"
+    },
+    {
+      "id": 51,
+      "text": "Perfect for military operations! Rugged, reliable, and the solar charging means we're not dependent on supply lines for power. Has been tested in combat zones with excellent results.",
+      "rating": 5,
+      "country": "USA",
+      "use_case": "Military/defense",
+      "date": "2024-04-15"
+    },
+    {
+      "id": 52,
+      "text": "The water flow rate decreases significantly over time. After 6 months, it's noticeably slower. Regular maintenance helps but it's still concerning for long-term use.",
+      "rating": 2,
+      "country": "Germany",
+      "use_case": "Long-term use",
+      "date": "2024-04-12"
+    },
+    {
+      "id": 53,
+      "text": "बहुत अच्छा उत्पाद है! हमारे आश्रम में सभी को साफ पानी मिलता है। सोलर पावर से चलता है इसलिए बिजली की समस्या नहीं है। धन्यवाद!",
+      "rating": 5,
+      "country": "India",
+      "use_case": "Religious institution",
+      "date": "2024-04-10"
+    },
+    {
+      "id": 54,
+      "text": "Great concept but execution needs work. The app interface is clunky, setup is complicated, and customer support is slow to respond. Good hardware, poor software experience.",
+      "rating": 2,
+      "country": "USA",
+      "use_case": "Tech review",
+      "date": "2024-04-08"
+    },
+    {
+      "id": 55,
+      "text": "Fantastic for yacht owners! Compact enough for small boats but powerful enough for extended trips. The marine-grade construction handles salt water environments perfectly.",
+      "rating": 5,
+      "country": "Spain",
+      "use_case": "Yacht/marine",
+      "date": "2024-04-05"
+    }
+  ]
+}

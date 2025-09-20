@@ -1,0 +1,156 @@
+{
+  "demo_config": {
+    "title": "AI-Powered Global Content Creation & Distribution Pipeline",
+    "level": "300-400",
+    "duration_minutes": 130,
+    "audience": "Technical professionals, business leaders, AI practitioners"
+  },
+  "tools_integration": {
+    "chatgpt": {
+      "use_cases": ["content_creation", "translation", "sentiment_analysis"],
+      "api_endpoint": "https://api.openai.com/v1/chat/completions",
+      "demo_prompts": [
+        "Create a comprehensive product manual for a solar-powered water purification device",
+        "Translate the following marketing content to Spanish, Japanese, German, and Hindi",
+        "Analyze the sentiment of customer feedback and categorize responses"
+      ]
+    },
+    "zapier": {
+      "use_cases": ["workflow_automation", "content_distribution", "feedback_routing"],
+      "demo_workflows": [
+        {
+          "name": "Content Distribution",
+          "trigger": "New content in Google Drive",
+          "actions": ["Post to Twitter", "Update website", "Send Slack notification"]
+        },
+        {
+          "name": "Feedback Processing",
+          "trigger": "New form submission",
+          "actions": ["Analyze sentiment", "Route to appropriate team", "Auto-respond"]
+        }
+      ]
+    },
+    "canva_gpt": {
+      "use_cases": ["social_media_design", "infographic_creation", "brand_materials"],
+      "demo_outputs": ["Product infographic", "Social media templates", "Presentation slides"]
+    },
+    "consensus_gpt": {
+      "use_cases": ["market_research", "literature_review", "trend_analysis"],
+      "demo_queries": [
+        "Water purification market trends 2024",
+        "Solar-powered devices adoption rates",
+        "Emerging markets water access challenges"
+      ]
+    }
+  },
+  "demo_data": {
+    "product": {
+      "name": "AquaPure Solar",
+      "category": "Water Purification",
+      "key_features": ["Solar-powered", "Portable", "99.9% purification", "IoT-enabled"],
+      "target_markets": ["US", "Spain", "Japan", "Germany", "India"],
+      "price_point": "$299"
+    },
+    "sample_feedback": [
+      {
+        "text": "This device saved our camping trip! Crystal clear water every time.",
+        "rating": 5,
+        "language": "English",
+        "market": "US"
+      },
+      {
+        "text": "Producto increíble para uso en áreas remotas. Muy recomendado.",
+        "rating": 4,
+        "language": "Spanish",
+        "market": "Spain"
+      },
+      {
+        "text": "太陽光で動く浄水器は革新的です。とても満足しています。",
+        "rating": 5,
+        "language": "Japanese",
+        "market": "Japan"
+      },
+      {
+        "text": "Funktioniert gut, aber könnte schneller sein.",
+        "rating": 3,
+        "language": "German",
+        "market": "Germany"
+      },
+      {
+        "text": "यह उपकरण बहुत उपयोगी है। पानी बिल्कुल साफ मिलता है।",
+        "rating": 4,
+        "language": "Hindi",
+        "market": "India"
+      }
+    ],
+    "market_research": {
+      "global_market_size": "$2.8B",
+      "growth_rate": "8.5% CAGR",
+      "key_competitors": ["LifeStraw", "Sawyer Products", "Katadyn", "Berkey"],
+      "market_gaps": ["Solar integration", "IoT connectivity", "Multi-language support"]
+    }
+  },
+  "success_metrics": {
+    "content_creation_time_reduction": "70%",
+    "translation_accuracy": "96%",
+    "workflow_automation_efficiency": "80%",
+    "customer_satisfaction_improvement": "25%",
+    "cost_savings_annual": "$50000",
+    "roi_timeline": "6 months"
+  },
+  "technical_requirements": {
+    "apis_needed": ["OpenAI", "Google Translate", "Zapier", "Sentiment Analysis"],
+    "platforms": ["ChatGPT", "Zapier", "Canva", "Google Workspace"],
+    "programming_languages": ["Python", "JavaScript"],
+    "cloud_services": ["AWS", "Google Cloud", "Azure"]
+  },
+  "demo_script": {
+    "introduction": {
+      "duration_minutes": 10,
+      "key_points": [
+        "Problem statement introduction",
+        "Traditional vs AI-powered approach",
+        "Expected outcomes and ROI"
+      ]
+    },
+    "live_demo": {
+      "duration_minutes": 90,
+      "phases": [
+        {
+          "name": "Content Creation",
+          "duration": 20,
+          "tools": ["ChatGPT", "Write For Me GPT"],
+          "deliverables": ["Product manual", "Marketing copy", "Translations"]
+        },
+        {
+          "name": "Visual Design",
+          "duration": 15,
+          "tools": ["DesignerGPT", "Canva GPT"],
+          "deliverables": ["Infographics", "Social media templates"]
+        },
+        {
+          "name": "Market Research",
+          "duration": 15,
+          "tools": ["Consensus GPT", "ChatGPT Multimodal"],
+          "deliverables": ["Market analysis", "Competitive insights"]
+        },
+        {
+          "name": "Feedback Analysis",
+          "duration": 20,
+          "tools": ["ChatGPT Sentiment Analysis"],
+          "deliverables": ["Sentiment reports", "Response automation"]
+        },
+        {
+          "name": "Workflow Automation",
+          "duration": 20,
+          "tools": ["Zapier"],
+          "deliverables": ["Automated workflows", "Integration setup"]
+        }
+      ]
+    },
+    "conclusion": {
+      "duration_minutes": 30,
+      "activities": ["Results presentation", "ROI analysis", "Q&A session"]
+    }
+  }
+}

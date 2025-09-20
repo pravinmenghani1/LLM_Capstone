@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoTech Auto-Scorer - Enhanced</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 EcoTech Auto-Scorer Enhanced</h1>
+            <p>Interactive Quality Assessment with Improvement Suggestions</p>
+            <p class="sub-header">Get instant feedback and actionable tips to improve your scores!</p>
+        </div>
+
+        <div class="upload-section">
+            <h2>📋 Submit Your Team's Artifacts</h2>
+            <p>Paste your content and get detailed scoring and improvement suggestions.</p>
+            
+            <div class="artifact-grid">
+                <div>
+                    <h3>🌍 Content Creation (30 points)</h3>
+                    <textarea id="translations" placeholder="Paste your translations here..."></textarea>
+                    <textarea id="linkedin" placeholder="Paste LinkedIn profiles here..."></textarea>
+                </div>
+                
+                <div>
+                    <h3>💬 Customer Intelligence (25 points)</h3>
+                    <textarea id="sentiment" placeholder="Paste sentiment analysis results..."></textarea>
+                    
+                    <h3>⚡ Automation Setup (25 points)</h3>
+                    <textarea id="workflows" placeholder="Paste workflow designs..."></textarea>
+                </div>
+            </div>
+
+            <h3>🔍 Data Quality (20 points)</h3>
+            <textarea id="validation" placeholder="Paste quality validation results..."></textarea>
+
+            <div class="button-group">
+                <button class="btn btn-primary" onclick="startAutoScoring()">🤖 Start Auto-Scoring</button>
+                <button class="btn btn-success" onclick="loadSampleData()">📝 Load Sample Data</button>
+            </div>
+        </div>
+
+        <div class="scoring-results" id="scoring-results">
+            <h2>📊 Scoring Results with Improvement Tips</h2>
+            
+            <div class="overall-score-wrapper">
+                <div class="progress-circle" id="overall-score">-</div>
+                <h3 id="score-label">Overall Score</h3>
+                <div id="launch-decision" class="launch-decision">Complete scoring to see recommendation</div>
+            </div>
+
+            <div id="detailed-scores">
+                <div class="score-item" id="content-score">
+                    <div class="score-header">
+                        <span><strong>Content Quality (30 points)</strong></span>
+                        <span id="content-points">-/30</span>
+                    </div>
+                    <div id="content-improvements" class="improvement-suggestions"></div>
+                </div>
+                <div class="score-item" id="intelligence-score">
+                    <div class="score-header">
+                        <span><strong>Customer Intelligence (25 points)</strong></span>
+                        <span id="intelligence-points">-/25</span>
+                    </div>
+                    <div id="intelligence-improvements" class="improvement-suggestions"></div>
+                </div>
+                <div class="score-item" id="automation-score">
+                    <div class="score-header">
+                        <span><strong>Automation Setup (25 points)</strong></span>
+                        <span id="automation-points">-/25</span>
+                    </div>
+                    <div id="automation-improvements" class="improvement-suggestions"></div>
+                </div>
+                <div class="score-item" id="quality-score">
+                    <div class="score-header">
+                        <span><strong>Data Quality (20 points)</strong></span>
+                        <span id="quality-points">-/20</span>
+                    </div>
+                    <div id="quality-improvements" class="improvement-suggestions"></div>
+                </div>
+            </div>
+
+            <div class="debug-info" id="debug-info">
+                <div id="debug-content"></div>
+            </div>
+
+            <div class="button-group">
+                <button class="btn btn-success" onclick="toggleDebug()">🔧 Show Interactive Debug</button>
+                <button class="btn btn-primary" onclick="exportResults()">📋 Export Results</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

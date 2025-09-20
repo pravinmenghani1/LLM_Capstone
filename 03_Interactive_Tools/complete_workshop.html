@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoTech Crisis Workshop - Complete Guide</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .slide { min-height: 100vh; display: none; padding: 20px; overflow-y: auto; }
+        .slide.active { display: block; }
+        .slide h1 { font-size: 2.5em; margin-bottom: 20px; text-align: center; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .slide h2 { font-size: 2em; margin-bottom: 15px; color: #FFD700; }
+        .slide h3 { font-size: 1.5em; margin-bottom: 15px; color: #87CEEB; }
+        .crisis-box { background: rgba(255,0,0,0.2); border: 3px solid #FF6B6B; border-radius: 15px; padding: 20px; margin: 15px 0; }
+        .prompt-box { background: rgba(0,255,0,0.2); border: 3px solid #4ECDC4; border-radius: 15px; padding: 20px; margin: 15px 0; }
+        .team-box { background: rgba(255,255,0,0.2); border: 3px solid #FFE66D; border-radius: 15px; padding: 20px; margin: 15px 0; }
+        .solution-box { background: rgba(128,0,128,0.2); border: 3px solid #9B59B6; border-radius: 15px; padding: 20px; margin: 15px 0; }
+        .timer { font-size: 3em; color: #FF6B6B; text-align: center; font-weight: bold; margin: 15px 0; }
+        .nav-buttons { position: fixed; bottom: 20px; right: 20px; z-index: 1000; }
+        .nav-buttons button { padding: 12px 20px; margin: 5px; font-size: 14px; border: none; border-radius: 8px; cursor: pointer; background: #4ECDC4; color: white; }
+        .nav-buttons button:hover { background: #45B7B8; }
+        .slide-counter { position: fixed; bottom: 20px; left: 20px; background: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px; }
+        ul { font-size: 1.1em; line-height: 1.6; margin-left: 25px; margin-bottom: 15px; }
+        .code-block { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 8px; margin: 10px 0; font-family: monospace; font-size: 0.9em; white-space: pre-wrap; }
+        .checklist { list-style: none; }
+        .checklist li { margin: 8px 0; }
+        .checklist li:before { content: "☐ "; color: #FFD700; font-weight: bold; }
+        .score-table { background: rgba(255,255,255,0.1); border-radius: 10px; padding: 15px; margin: 15px 0; }
+        .score-table table { width: 100%; border-collapse: collapse; font-size: 0.9em; }
+        .score-table th, .score-table td { padding: 8px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.3); }
+        .emoji { font-size: 1.2em; }
+        .section-nav { background: rgba(0,0,0,0.3); padding: 15px; border-radius: 10px; margin: 20px 0; }
+        .section-nav button { background: #9B59B6; color: white; border: none; padding: 8px 15px; margin: 5px; border-radius: 5px; cursor: pointer; }
+        .section-nav button:hover { background: #8E44AD; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <!-- Slide 1: Title & Navigation -->
+        <div class="slide active">
+            <h1>🚨 ECOTECH CRISIS WORKSHOP 🚨</h1>
+            <div class="crisis-box">
+                <h2>Complete Workshop Guide</h2>
+                <p style="font-size: 1.3em; text-align: center;">
+                    <strong>$2 Million Product Launch at Risk</strong><br>
+                    <span style="color: #FFD700;">AI Tools Challenge - Level 300-400</span>
+                </p>
+            </div>
+            
+            <div class="section-nav">
+                <h3>📋 Workshop Sections:</h3>
+                <button onclick="goToSlide(1)">🎬 Crisis Scenario</button>
+                <button onclick="goToSlide(5)">📋 Solution Guide</button>
+                <button onclick="goToSlide(15)">🤖 AI Prompts</button>
+                <button onclick="goToSlide(25)">🏆 Sample Solutions</button>
+                <button onclick="goToSlide(35)">✅ Execution Checklist</button>
+                <button onclick="goToSlide(40)">🎯 Workshop Phases</button>
+            </div>
+            
+            <div class="team-box">
+                <h3>🎯 What This Workshop Includes:</h3>
+                <ul>
+                    <li><strong>Crisis Scenario:</strong> Real business problem with $2M at stake</li>
+                    <li><strong>Step-by-Step Solutions:</strong> Exactly what teams should accomplish</li>
+                    <li><strong>AI Prompts:</strong> Copy-paste ready prompts for each tool</li>
+                    <li><strong>Sample Outputs:</strong> Examples of excellent work</li>
+                    <li><strong>Execution Guide:</strong> Complete facilitator instructions</li>
+                    <li><strong>Interactive Phases:</strong> 6 timed workshop phases</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 2: The Crisis -->
+        <div class="slide">
+            <h1>📧 THE CRISIS SITUATION</h1>
+            <div class="crisis-box">
+                <h3>From: CEO Sarah Martinez &lt;ceo@ecotech.com&gt;</h3>
+                <h3>Subject: URGENT - Product Launch Crisis - Need Solution in 4 Hours</h3>
+                <div class="code-block">Team,
+
+We have a MAJOR crisis. Our marketing agency just canceled due to a data breach.
+Our AquaPure Solar launch in 5 countries is happening TODAY at 2 PM.
+
+We need to:
+1. Create product content in 5 languages (English, Spanish, Japanese, German, Hindi)
+2. Analyze 50+ customer reviews from beta testing
+3. Set up automated customer support workflows
+4. Validate all our product data for consistency
+5. Create professional profiles for our international sales team
+
+We have 4 HOURS to make this happen or we lose $2M in pre-orders.
+
+Your mission: Use AI tools to save our launch.
+
+- Sarah</div>
+            </div>
+            
+            <div class="team-box">
+                <h3>🎯 Your Mission:</h3>
+                <ul>
+                    <li><strong>Team Size:</strong> 3-4 people per team</li>
+                    <li><strong>Time Limit:</strong> 4 hours (workshop: 90 minutes)</li>
+                    <li><strong>Success Metric:</strong> Launch readiness score >85%</li>
+                    <li><strong>At Stake:</strong> $2M in pre-orders</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 3: Team Roles -->
+        <div class="slide">
+            <h1>👥 TEAM ROLES & RESPONSIBILITIES</h1>
+            <div class="team-box">
+                <h2>Role Assignments (3-4 people):</h2>
+                <h3>🌍 Content Manager</h3>
+                <ul>
+                    <li>Create product descriptions in 5 languages</li>
+                    <li>Ensure cultural adaptation for each market</li>
+                    <li>Maintain brand consistency across languages</li>
+                    <li>Generate marketing taglines</li>
+                </ul>
+                
+                <h3>📊 Data Analyst</h3>
+                <ul>
+                    <li>Analyze 15 customer reviews for sentiment</li>
+                    <li>Identify urgent issues and patterns</li>
+                    <li>Create response templates</li>
+                    <li>Prioritize action items</li>
+                </ul>
+                
+                <h3>⚡ Automation Specialist</h3>
+                <ul>
+                    <li>Design customer support workflows</li>
+                    <li>Create social media monitoring automation</li>
+                    <li>Define escalation rules</li>
+                    <li>Plan backup procedures</li>
+                </ul>
+                
+                <h3>🔍 Quality Assurance</h3>
+                <ul>
+                    <li>Validate data consistency across all content</li>
+                    <li>Check translation quality</li>
+                    <li>Ensure technical accuracy</li>
+                    <li>Calculate overall quality score</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 4: Product Specs -->
+        <div class="slide">
+            <h1>🔧 PRODUCT SPECIFICATIONS</h1>
+            <div class="solution-box">
+                <h2>AquaPure Solar - Revolutionary Water Purifier</h2>
+                <h3>📋 Technical Specifications:</h3>
+                <ul>
+                    <li><strong>Power Source:</strong> Solar (20W panel included)</li>
+                    <li><strong>Purification Rate:</strong> 99.9% bacteria, virus, and parasite removal</li>
+                    <li><strong>Weight:</strong> 2.5kg total (portable design)</li>
+                    <li><strong>Capacity:</strong> 10 liters per hour processing</li>
+                    <li><strong>Connectivity:</strong> IoT-enabled for remote monitoring</li>
+                    <li><strong>Operating Range:</strong> -10°C to 50°C</li>
+                    <li><strong>Power Requirements:</strong> No electricity or batteries needed</li>
+                    <li><strong>Warranty:</strong> 2-year international coverage</li>
+                </ul>
+                
+                <h3>🌍 Target Markets & Pricing:</h3>
+                <ul>
+                    <li><strong>USA:</strong> $299 USD (outdoor recreation, emergency prep)</li>
+                    <li><strong>Spain:</strong> €279 EUR (adventure sports, camping)</li>
+                    <li><strong>Japan:</strong> ¥32,000 JPY (technology enthusiasts, precision)</li>
+                    <li><strong>Germany:</strong> €279 EUR (environmental sustainability)</li>
+                    <li><strong>India:</strong> ₹24,999 INR (rural communities, villages)</li>
+                </ul>
+                
+                <h3>🎯 Primary Use Cases:</h3>
+                <ul>
+                    <li>Off-grid communities and rural areas</li>
+                    <li>Emergency response and disaster relief</li>
+                    <li>Outdoor recreation (camping, hiking, RV travel)</li>
+                    <li>Healthcare facilities in remote locations</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SOLUTION GUIDE SECTION -->
+        <!-- Slide 5: Solution Guide Intro -->
+        <div class="slide">
+            <h1>📋 SOLUTION GUIDE</h1>
+            <div class="solution-box">
+                <h2>Step-by-Step: What Teams Must Accomplish</h2>
+                <p style="font-size: 1.2em; margin-bottom: 20px;">This guide shows exactly what deliverables each team should produce in each phase to save the $2M launch.</p>
+                
+                <h3>🎯 Phase Overview:</h3>
+                <ul>
+                    <li><strong>Phase 1 (10 min):</strong> Crisis Assessment & Planning</li>
+                    <li><strong>Phase 2 (25 min):</strong> Content Creation & Translation</li>
+                    <li><strong>Phase 3 (20 min):</strong> Customer Intelligence Analysis</li>
+                    <li><strong>Phase 4 (20 min):</strong> Automation Workflow Setup</li>
+                    <li><strong>Phase 5 (10 min):</strong> Quality Assurance Validation</li>
+                    <li><strong>Phase 6 (5 min):</strong> Crisis Resolution Presentation</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- AI PROMPTS SECTION -->
+        <!-- Slide 15: AI Prompts Intro -->
+        <div class="slide">
+            <h1>🤖 AI PROMPTS GUIDE</h1>
+            <div class="prompt-box">
+                <h2>Copy-Paste Ready Prompts for Each Phase</h2>
+                <p style="font-size: 1.2em; margin-bottom: 20px;">These prompts are designed to be copied directly into ChatGPT or other AI tools during the workshop.</p>
+                
+                <h3>📋 Prompt Categories:</h3>
+                <ul>
+                    <li><strong>Content Creation:</strong> Multilingual translation prompts</li>
+                    <li><strong>LinkedIn Profiles:</strong> Professional profile generation</li>
+                    <li><strong>Sentiment Analysis:</strong> Customer review processing</li>
+                    <li><strong>Workflow Design:</strong> Automation setup prompts</li>
+                    <li><strong>Quality Validation:</strong> Data consistency checks</li>
+                    <li><strong>Presentation Prep:</strong> CEO summary generation</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 16: Translation Prompts -->
+        <div class="slide">
+            <h1>🌍 TRANSLATION PROMPTS</h1>
+            <div class="prompt-box">
+                <h3>Spanish Market (Spain):</h3>
+                <div class="code-block">Translate this AquaPure Solar product description to Spanish for the Spanish market. 
+Adapt it culturally for outdoor recreation and emergency preparedness use cases. 
+Maintain technical accuracy but use language that appeals to Spanish consumers:
+
+"AquaPure Solar - Revolutionary water purification device. Solar-powered operation, 
+99.9% bacteria and virus removal, portable design (2.5kg), processes 10 liters per hour, 
+IoT connectivity for monitoring, works -10°C to 50°C, $299 USD."
+
+Also create a compelling marketing tagline for Spain.</div>
+                
+                <h3>Japanese Market (Japan):</h3>
+                <div class="code-block">Translate this AquaPure Solar description to Japanese for the Japanese market. 
+Focus on quality, technology, and reliability - values important to Japanese consumers. 
+Emphasize the IoT features and precision engineering:
+
+[Same product description]
+
+Create a tagline that emphasizes technological innovation and reliability.</div>
+            </div>
+        </div>
+
+        <!-- SAMPLE SOLUTIONS SECTION -->
+        <!-- Slide 25: Sample Solutions Intro -->
+        <div class="slide">
+            <h1>🏆 SAMPLE SOLUTIONS</h1>
+            <div class="solution-box">
+                <h2>Examples of Excellent Outputs</h2>
+                <p style="font-size: 1.2em; margin-bottom: 20px;">These samples show what high-quality deliverables look like for each phase.</p>
+                
+                <h3>📋 What's Included:</h3>
+                <ul>
+                    <li><strong>Translation Examples:</strong> High-quality multilingual content</li>
+                    <li><strong>LinkedIn Profiles:</strong> Professional, compelling profiles</li>
+                    <li><strong>Sentiment Analysis:</strong> Thorough review processing</li>
+                    <li><strong>Workflow Designs:</strong> Complete automation setups</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- EXECUTION CHECKLIST SECTION -->
+        <!-- Slide 35: Execution Checklist -->
+        <div class="slide">
+            <h1>✅ EXECUTION CHECKLIST</h1>
+            <div class="solution-box">
+                <h2>Complete Facilitator Guide</h2>
+                <h3>📋 Pre-Workshop Setup (30 minutes):</h3>
+                <ul class="checklist">
+                    <li>Test internet connectivity for all participants</li>
+                    <li>Ensure ChatGPT access (have backup accounts ready)</li>
+                    <li>Open presentation in full-screen mode</li>
+                    <li>Have timer/stopwatch ready for each phase</li>
+                    <li>Print crisis brief packets (1 per team)</li>
+                    <li>Arrange teams of 3-4 people each</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- WORKSHOP PHASES SECTION -->
+        <!-- Slide 40: Workshop Phase 1 -->
+        <div class="slide">
+            <h1>📋 WORKSHOP PHASE 1</h1>
+            <div class="timer">⏰ 10 MINUTES</div>
+            <div class="crisis-box">
+                <h2>Crisis Assessment & Team Planning</h2>
+                <h3>What Teams Must Do:</h3>
+                <ul>
+                    <li>Assign roles to team members</li>
+                    <li>Review product specifications</li>
+                    <li>Plan AI tool strategy</li>
+                    <li>Create action timeline</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Final Slide: Ready to Start -->
+        <div class="slide">
+            <h1>🚀 READY TO SAVE ECOTECH?</h1>
+            <div class="crisis-box">
+                <h2 style="text-align: center;">The Clock Starts NOW</h2>
+                <div class="timer">4:00:00</div>
+                <p style="font-size: 1.5em; text-align: center;">
+                    <strong>Your mission:</strong> Use AI tools to save a $2M product launch
+                </p>
+            </div>
+            
+            <p style="text-align: center; font-size: 2em; margin-top: 40px; color: #FFD700;">
+                <strong>Good luck, teams! 🍀</strong>
+            </p>
+        </div>
+
+    </div>
+
+    <div class="nav-buttons">
+        <button onclick="previousSlide()">← Previous</button>
+        <button onclick="nextSlide()">Next →</button>
+        <button onclick="goToSlide(0)">🏠 Home</button>
+    </div>
+
+    <div class="slide-counter">
+        <span id="slideNumber">1</span> / <span id="totalSlides">12</span>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        
+        function updateSlideCounter() {
+            document.getElementById('slideNumber').textContent = currentSlide + 1;
+            document.getElementById('totalSlides').textContent = slides.length;
+        }
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+            updateSlideCounter();
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function previousSlide() {
+            showSlide(currentSlide - 1);
+        }
+        
+        function goToSlide(n) {
+            showSlide(n);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+            if (e.key === 'ArrowLeft') previousSlide();
+            if (e.key === 'Home') goToSlide(0);
+        });
+
+        // Initialize
+        updateSlideCounter();
+    </script>
+</body>
+</html>
